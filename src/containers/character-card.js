@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import RaceSelector from '../components/race-selector';
+import { CirclePicker } from 'react-color';
 
 const races = ['Orc', 'Skeleton', 'Ogre'];
 const names = ['Dongleflop', 'Buttlescum', 'Pookey Bumfluff'];
@@ -38,6 +39,9 @@ const customStyles = {
   pos: {
     marginBottom: 12,
   },
+  picker: {
+    marginLeft: 90,
+  },
 };
 
 class CharacterCard extends Component {
@@ -46,10 +50,17 @@ class CharacterCard extends Component {
     this.state = {
       selectedRace: Math.floor(Math.random() * races.length),
       selectedClass: Math.floor(Math.random() * charclasses.length),
+      customColor: '#000',
     };
     this.raceClick = this.raceClick.bind(this);
     this.classClick = this.classClick.bind(this);
+    this.colorChange = this.colorChange.bind(this);
   }
+
+  colorChange = color => {
+    console.log(color);
+    this.setState({ customColor: color.hex });
+  };
 
   raceClick = item => {
     this.setState({ selectedRace: item });
@@ -68,14 +79,22 @@ class CharacterCard extends Component {
 
     return (
       <div>
-        <Card className={classes.card}>
+        <Card
+          className={classes.card}
+          style={{ borderColor: this.state.customColor }}
+        >
           <RaceSelector
             handleClick={this.raceClick}
             selectedItem={this.state.selectedRace}
             races={races}
           />
           <CardContent>
-            <Typography gutterBottom variant="headline" component="h2">
+            <Typography
+              gutterBottom
+              variant="headline"
+              component="h2"
+              style={{ color: this.state.customColor }}
+            >
               {names[Math.floor(Math.random() * names.length)]}
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
@@ -85,9 +104,9 @@ class CharacterCard extends Component {
             <Typography component="p">
               {stories[Math.floor(Math.random() * stories.length)]}
             </Typography>
-            <Typography component="p" />
           </CardContent>
         </Card>
+        <CirclePicker className={classes.picker} onChange={this.colorChange} />
       </div>
     );
   }
