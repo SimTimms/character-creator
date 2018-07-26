@@ -5,16 +5,19 @@ import { withStyles } from '@material-ui/core/styles';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
-import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import RaceSelector from '../components/race-selector';
-import ClassSelector from '../components/class-selector';
-import TextField from '@material-ui/core/TextField';
-import WeaponSelector from '../components/weapon-selector';
+import RaceAutoSelector from '../components/race-selector';
 
 const races = ['Orc', 'Skeleton', 'Ogre'];
-const classes = ['Priest', 'Mage', 'Warrior', 'Wizard'];
+const names = ['Dongleflop', 'Buttlescum', 'Pookey Bumfluff'];
+const charclasses = ['Priest', 'Mage', 'Warrior', 'Wizard'];
+const stories = [
+  "She's jovial, humorous, mysterious and perhaps a little too facetious. This isn't surprising considering for someone with her position.",
+  'Having found a significant other, he now works as a travelling trader. By doing so, he hopes to learn more about the past and finally find purpose to life he has never had.',
+  'He was born and grew up in a poor family in a normal city, he lived free of trouble until he was about 13 years old, but at that point things took a turn for the worst.',
+  'He was born in a middle class family in a major community. He lived free of worries until he was about 14 years old, but at that point life changed.',
+];
 
 const customStyles = {
   root: {
@@ -32,18 +35,18 @@ const customStyles = {
     height: 0,
     paddingTop: '56.25%', // 16:9
   },
+  pos: {
+    marginBottom: 12,
+  },
 };
 
 class CharacterCard extends Component {
   constructor(props) {
     super();
     this.state = {
-      race: races[0],
-      charclass: classes[0],
-      selectedRace: 0,
-      selectedClass: 0,
+      selectedRace: Math.floor(Math.random() * races.length),
+      selectedClass: Math.floor(Math.random() * charclasses.length),
       races: races,
-      classes: classes,
     };
     this.raceClick = this.raceClick.bind(this);
     this.classClick = this.classClick.bind(this);
@@ -52,64 +55,37 @@ class CharacterCard extends Component {
   raceClick = item => {
     this.setState({ selectedRace: item });
     this.setState({ race: races[item] });
+    this.setState({ selectedClass: item });
+    this.setState({
+      charclass: charclasses[Math.floor(Math.random() * charclasses.length)],
+    });
   };
 
-  classClick = item => {
-    this.setState({ selectedClass: item });
-    this.setState({ charclass: classes[item] });
-  };
+  classClick = item => {};
 
   render() {
     const { classes } = this.props;
-    console.log(this.props);
+
     return (
       <div>
         <Card className={classes.card}>
-          <Grid container spacing={0}>
-            <Grid item xs={6}>
-              <RaceSelector
-                handleClick={this.raceClick}
-                selectedItem={this.state.selectedRace}
-                races={this.state.races}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <ClassSelector
-                handleClick={this.classClick}
-                selectedItem={this.state.selectedClass}
-                classes={this.state.classes}
-              />
-            </Grid>
-          </Grid>
-
+          <RaceAutoSelector
+            handleClick={this.raceClick}
+            selectedItem={this.state.selectedRace}
+            races={this.state.races}
+          />
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
-              {this.state.race} {this.state.charclass}
+              {names[Math.floor(Math.random() * names.length)]}
+            </Typography>
+            <Typography className={classes.pos} color="textSecondary">
+              {races[this.state.selectedRace]}&nbsp;
+              {charclasses[this.state.selectedClass]}
             </Typography>
             <Typography component="p">
-              <TextField
-                id="name"
-                label="Name"
-                className={classes.textField}
-                value={this.state.name}
-                margin="normal"
-              />
-              <TextField
-                id="strength"
-                label="Strength"
-                className={classes.textField}
-                value={this.state.name}
-                margin="normal"
-              />
-
-              <TextField
-                id="agility"
-                label="Agility"
-                className={classes.textField}
-                value={this.state.name}
-                margin="normal"
-              />
+              {stories[Math.floor(Math.random() * stories.length)]}
             </Typography>
+            <Typography component="p" />
           </CardContent>
         </Card>
       </div>
