@@ -31,7 +31,6 @@ const RaceSelector = props => {
         return (
           <div key={item}>
             <img src={require(`../images/${itemLow}.jpg`)} alt={itemLow} />
-            <p className="legend">{item}</p>
           </div>
         );
       })}

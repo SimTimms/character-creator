@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import RaceAutoSelector from '../components/race-selector';
+import RaceSelector from '../components/race-selector';
 
 const races = ['Orc', 'Skeleton', 'Ogre'];
 const names = ['Dongleflop', 'Buttlescum', 'Pookey Bumfluff'];
-const charclasses = ['Priest', 'Mage', 'Warrior', 'Wizard'];
+const charclasses = ['Priest', 'Mage', 'Warrior', 'Wizard', 'Rogue'];
 const stories = [
   "She's jovial, humorous, mysterious and perhaps a little too facetious. This isn't surprising considering for someone with her position.",
   'Having found a significant other, he now works as a travelling trader. By doing so, he hopes to learn more about the past and finally find purpose to life he has never had.',
@@ -46,7 +46,6 @@ class CharacterCard extends Component {
     this.state = {
       selectedRace: Math.floor(Math.random() * races.length),
       selectedClass: Math.floor(Math.random() * charclasses.length),
-      races: races,
     };
     this.raceClick = this.raceClick.bind(this);
     this.classClick = this.classClick.bind(this);
@@ -54,8 +53,9 @@ class CharacterCard extends Component {
 
   raceClick = item => {
     this.setState({ selectedRace: item });
-    this.setState({ race: races[item] });
-    this.setState({ selectedClass: item });
+    this.setState({
+      selectedClass: Math.floor(Math.random() * charclasses.length),
+    });
     this.setState({
       charclass: charclasses[Math.floor(Math.random() * charclasses.length)],
     });
@@ -69,10 +69,10 @@ class CharacterCard extends Component {
     return (
       <div>
         <Card className={classes.card}>
-          <RaceAutoSelector
+          <RaceSelector
             handleClick={this.raceClick}
             selectedItem={this.state.selectedRace}
-            races={this.state.races}
+            races={races}
           />
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
