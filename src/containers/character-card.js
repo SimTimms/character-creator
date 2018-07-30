@@ -64,15 +64,15 @@ class CharacterCard extends Component {
         break;
 
       case 'barbarian':
-        classNames = classList.wizard;
+        classNames = classList.barbarian;
         break;
 
       case 'priest':
-        classNames = classList[selectedRaceName];
+        classNames = classList.priest;
         break;
 
       default:
-        classNames = classList.wizard;
+        classNames = classList.rogue;
         break;
     }
     name = raceNames[Math.floor(Math.random() * raceNames.length)];
