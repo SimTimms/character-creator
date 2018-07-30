@@ -104,15 +104,15 @@ const customStyles = {
   storyText: {
     width: '58%',
     fontWeight: 200,
-    fontSize: '2.5vw',
+    fontSize: '2vw',
     marginTop: '50.5%',
     marginLeft: '20%',
   },
   demiseText: {
     width: '40%',
     fontWeight: 200,
-    fontSize: '2.5vw',
-    marginTop: '78.5%',
+    fontSize: '2vw',
+    marginTop: '76%',
     marginLeft: '33%',
   },
 };
