@@ -17,11 +17,12 @@ const customStyles = {
 };
 
 const ClassSelector = props => {
+  console.log(props.charClasses + ' ' + props.selectedItem);
   return (
     <Carousel
       key="classes"
       showArrows={false}
-      useKeyboardArrows={true}
+      useKeyboardArrows={false}
       showThumbs={false}
       infiniteLoop={true}
       showIndicators={false}

@@ -14,6 +14,7 @@ import {
   stories,
   demise,
   names,
+  classList,
   maps,
 } from '../data/index';
 
@@ -33,9 +34,6 @@ class CharacterCard extends Component {
     this.setState({
       selectedClass: Math.floor(Math.random() * charclasses.length),
     });
-    this.setState({
-      charclass: charclasses[Math.floor(Math.random() * charclasses.length)],
-    });
   };
 
   render() {
@@ -45,18 +43,36 @@ class CharacterCard extends Component {
 
     switch (selectedRaceName) {
       case 'elf':
-        raceNames = names.elfNames.raceNames;
-        classNames = names.elfNames.classNames;
+        raceNames = names.elfNames;
         break;
 
       case 'halfling':
-        raceNames = names.halflingNames.raceNames;
-        classNames = names.halflingNames.classNames;
+        raceNames = names.halflingNames;
+        break;
+
+      case 'dwarf':
+        raceNames = names.dwarfNames;
         break;
 
       default:
-        raceNames = names.humanNames.raceNames;
-        classNames = names.humanNames.classNames;
+        raceNames = names.humanNames;
+        break;
+    }
+    switch (selectedRaceName) {
+      case 'wizard':
+        classNames = classList.wizard;
+        break;
+
+      case 'barbarian':
+        classNames = classList.wizard;
+        break;
+
+      case 'priest':
+        classNames = classList[selectedRaceName];
+        break;
+
+      default:
+        classNames = classList.wizard;
         break;
     }
     name = raceNames[Math.floor(Math.random() * raceNames.length)];
