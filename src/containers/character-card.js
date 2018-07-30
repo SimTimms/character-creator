@@ -126,7 +126,7 @@ class CharacterCard extends Component {
             </div>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
-            <div className={classes.charName}>{`${name} ${surname}`}</div>
+            <h1 className={classes.charName}>{`${name} ${surname}`}</h1>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
             <div className={classes.storyText}>
