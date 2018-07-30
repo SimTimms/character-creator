@@ -5,13 +5,10 @@ import PropTypes from 'prop-types';
 
 const customStyles = {
   carousel: {
-    maxWidth: 375,
-
-    position: 'absolute',
-    top: 50,
-    left: 80,
-    width: 100,
+    width: '50%',
     zIndex: 0,
+    marginLeft: '40%',
+    marginTop: '23%',
   },
   media: {
     height: 0,
@@ -37,7 +34,7 @@ const RaceSelector = props => {
         let itemLow = item.toString().toLowerCase();
         return (
           <div key={item}>
-            <img src={require(`../images/${itemLow}.jpg`)} alt={itemLow} />
+            <img src={require(`../images/race/${itemLow}.jpg`)} alt={itemLow} />
           </div>
         );
       })}
