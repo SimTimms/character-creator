@@ -40,6 +40,7 @@ class CharacterCard extends Component {
     const { classes } = this.props;
     let name, surname, raceNames, classNames, map, mapImage;
     let selectedRaceName = races[this.state.selectedRace];
+    let selectedClassName = charclasses[this.state.selectedClass];
 
     switch (selectedRaceName) {
       case 'elf':
@@ -58,7 +59,7 @@ class CharacterCard extends Component {
         raceNames = names.humanNames;
         break;
     }
-    switch (selectedRaceName) {
+    switch (selectedClassName) {
       case 'wizard':
         classNames = classList.wizard;
         break;
@@ -121,9 +122,7 @@ class CharacterCard extends Component {
             </div>
           </Grid>
           <Grid item xs={6} className={classes.gridTemplate}>
-            <div className={classes.className}>
-              {charclasses[this.state.selectedClass]}
-            </div>
+            <div className={classes.className}>{selectedClassName}</div>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
             <h1 className={classes.charName}>{`${name} ${surname}`}</h1>
