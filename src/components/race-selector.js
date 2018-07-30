@@ -6,6 +6,12 @@ import PropTypes from 'prop-types';
 const customStyles = {
   carousel: {
     maxWidth: 375,
+
+    position: 'absolute',
+    top: 50,
+    left: 80,
+    width: 100,
+    zIndex: 0,
   },
   media: {
     height: 0,
@@ -17,11 +23,12 @@ const RaceSelector = props => {
   return (
     <Carousel
       key="races"
-      showArrows={true}
+      showArrows={false}
       useKeyboardArrows={true}
       showThumbs={false}
       infiniteLoop={true}
       showIndicators={false}
+      showStatus={false}
       onChange={props.handleClick}
       selectedItem={props.selectedItem}
       className={props.classes.carousel}

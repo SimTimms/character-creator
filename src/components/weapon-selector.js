@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const customStyles = {
   carousel: {
-    maxWidth: 100,
+    maxWidth: 300,
   },
   media: {
     height: 0,
