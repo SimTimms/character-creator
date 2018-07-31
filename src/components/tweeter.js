@@ -1,16 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { TwitterShareButton } from 'react-share';
 const Tweeter = props => {
+  if (props.twitterURL === '') {
+    return <button>-</button>;
+  }
   return (
     <div>
       <button>
         <TwitterShareButton
           url={props.twitterURL}
-          title={'Check This'}
+          title={
+            'This is my Hero Master character, create yours at heromaster.link'
+          }
           via={'thenobleartist'}
           class="twitter-share-button"
         >
-          {props.twitterURL}
+          Tweet This
         </TwitterShareButton>
       </button>
     </div>

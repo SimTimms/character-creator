@@ -33,6 +33,16 @@ const customStyles = {
     zIndex: 0,
     marginTop: '-100%',
   },
+
+  templateBack2: {
+    flexGrow: 1,
+    width: '100%',
+    height: 0,
+    paddingTop: '100%',
+    position: 'relative',
+    zIndex: -1,
+    marginBottom: '-100%',
+  },
   map: {
     width: '40%',
     marginLeft: '60%',
@@ -63,7 +73,7 @@ const customStyles = {
     height: 0,
     paddingTop: '100%',
     marginTop: '-100%',
-    position: 'fixed',
+    position: 'absolute',
     zIndex: -1,
   },
   gridTemplate: {
@@ -114,7 +124,7 @@ const customStyles = {
     top: 210,
     marginLeft: 202,
     zIndex: 0,
-    position: 'fixed',
+    position: 'relative',
     left: 0,
   },
   charName: {
