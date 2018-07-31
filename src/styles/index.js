@@ -63,7 +63,7 @@ const customStyles = {
     height: 0,
     paddingTop: '100%',
     marginTop: '-100%',
-    position: 'relative',
+    position: 'fixed',
     zIndex: -1,
   },
   gridTemplate: {

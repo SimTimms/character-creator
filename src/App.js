@@ -6,8 +6,8 @@ import Tweeter from './components/tweeter';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
 
-const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
-//const apiTarget = 'http://localhost:3001/upload-char';
+//const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
+const apiTarget = 'http://localhost:3001/upload-char';
 
 class App extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class App extends Component {
       <div className="App">
         <button onClick={this.printClick}>Print</button>
         <Tweeter twitterURL={this.state.twitterURL} />
-        <CharacterCard apiTarget={apiTarget} id="target" />
+        <CharacterCard apiTarget={apiTarget} />
       </div>
     );
   }
