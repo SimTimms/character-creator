@@ -8,9 +8,6 @@ import PropTypes from 'prop-types';
 import RaceSelector from '../components/race-selector';
 import ClassSelector from '../components/class-selector';
 import customStyles from '../styles/index';
-import html2canvas from 'html2canvas';
-import axios from 'axios';
-import { TwitterShareButton } from 'react-share';
 
 import {
   races,
@@ -21,9 +18,6 @@ import {
   classList,
   maps,
 } from '../data/index';
-
-const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
-//const apiTarget = 'http://localhost:3001/upload-char';
 
 let print = false;
 
@@ -37,38 +31,12 @@ class CharacterCard extends Component {
       twitterURL: '',
     };
     this.raceClick = this.raceClick.bind(this);
-    this.printClick = this.printClick.bind(this);
   }
 
   raceClick = item => {
     this.setState({ selectedRace: item });
     this.setState({
       selectedClass: Math.floor(Math.random() * charclasses.length),
-    });
-  };
-
-  printClick = () => {
-    print = true;
-    if (document.getElementById('printCanvas')) {
-      var element = document.getElementById('printCanvas');
-      element.parentNode.removeChild(element);
-    }
-
-    html2canvas(document.getElementById('target')).then(canvas => {
-      canvas.id = 'printCanvas';
-      canvas.style = 'overflow:hidden; width:0; height:0;';
-      document.body.appendChild(canvas);
-      print = false;
-
-      axios
-        .post(apiTarget, {
-          filename: document
-            .getElementById('printCanvas')
-            .toDataURL('image/jpeg'),
-        })
-        .then(result => {
-          this.setState({ twitterURL: result.data });
-        });
     });
   };
 
@@ -179,80 +147,68 @@ class CharacterCard extends Component {
     }
 
     return (
-      <div id="target">
-        <button>
-          <TwitterShareButton
-            url={this.state.twitterURL}
-            title={'Check This'}
-            via={'dad'}
-            className={classes.twitter}
-            class="twitter-share-button"
-          >
-            {this.state.twitterURL}
-          </TwitterShareButton>
-        </button>
-        <button onClick={this.printClick} className={classes.printButton}>
-          Print
-        </button>
-        <div className={classes.templateMap}>
-          <img
-            src={require(`../images/maps/${mapImage}.jpg`)}
-            className={classes.map}
-            alt="Map"
-          />
-        </div>
-        <div className={classes.template} />
-        <Grid container spacing={0} className={classes.templateBack}>
-          <Grid item xs={6} className={classes.gridTemplate}>
-            <div>{raceSelector}</div>
-          </Grid>
-          <Grid item xs={6} className={classes.gridTemplate}>
-            <div>{classSelector}</div>
-          </Grid>
-        </Grid>
-        <Grid container spacing={0} className={classes.templateFront}>
-          <Grid item xs={12} className={classes.gridTemplate}>
-            <div className={classes.header}>
-              <h1>an epic game of epic fails</h1>
-            </div>
-          </Grid>
-          <Grid item xs={6} className={classes.gridTemplate}>
-            <div className={classes.raceName}>
-              <h2>{selectedRaceName}</h2>
-            </div>
-          </Grid>
-          <Grid item xs={6} className={classes.gridTemplate}>
-            <div className={classes.className}>
-              <h2>{selectedClassName}</h2>
-            </div>
-          </Grid>
-          <Grid item xs={12} className={classes.gridTemplate}>
-            <h1 className={classes.charName}>{`${name} ${surname}`}</h1>
-          </Grid>
-          <Grid item xs={12} className={classes.gridTemplate}>
-            <div className={classes.storyText}>{story}</div>
-          </Grid>
-          <Grid item xs={12} className={classes.gridTemplate}>
-            <div className={classes.demiseHeader}>
-              <h2>previous party demise</h2>
-            </div>
-          </Grid>
-          <Grid item xs={12} className={classes.gridTemplate}>
-            <div className={classes.demiseText}>{demiseStory}</div>
-          </Grid>
-          <Grid item xs={12} className={classes.gridTemplate}>
-            <div className={classes.lastSeen}>
-              <h2>last seen</h2>
-            </div>
-          </Grid>
-          <Grid item xs={3} className={classes.gridTemplate}>
+      <div>
+        <div id="target">
+          <div className={classes.templateMap}>
             <img
-              src={require(`../images/treasure/${treasureImage}.png`)}
-              alt="Card"
-              className={classes.cardTemplate}
+              src={require(`../images/maps/${mapImage}.jpg`)}
+              className={classes.map}
+              alt="Map"
             />
+          </div>
+          <div className={classes.template} />
+          <Grid container spacing={0} className={classes.templateBack}>
+            <Grid item xs={6} className={classes.gridTemplate}>
+              <div>{raceSelector}</div>
+            </Grid>
+            <Grid item xs={6} className={classes.gridTemplate}>
+              <div>{classSelector}</div>
+            </Grid>
           </Grid>
-        </Grid>
+          <Grid container spacing={0} className={classes.templateFront}>
+            <Grid item xs={12} className={classes.gridTemplate}>
+              <div className={classes.header}>
+                <h1>an epic game of epic fails</h1>
+              </div>
+            </Grid>
+            <Grid item xs={6} className={classes.gridTemplate}>
+              <div className={classes.raceName}>
+                <h2>{selectedRaceName}</h2>
+              </div>
+            </Grid>
+            <Grid item xs={6} className={classes.gridTemplate}>
+              <div className={classes.className}>
+                <h2>{selectedClassName}</h2>
+              </div>
+            </Grid>
+            <Grid item xs={12} className={classes.gridTemplate}>
+              <h1 className={classes.charName}>{`${name} ${surname}`}</h1>
+            </Grid>
+            <Grid item xs={12} className={classes.gridTemplate}>
+              <div className={classes.storyText}>{story}</div>
+            </Grid>
+            <Grid item xs={12} className={classes.gridTemplate}>
+              <div className={classes.demiseHeader}>
+                <h2>previous party demise</h2>
+              </div>
+            </Grid>
+            <Grid item xs={12} className={classes.gridTemplate}>
+              <div className={classes.demiseText}>{demiseStory}</div>
+            </Grid>
+            <Grid item xs={12} className={classes.gridTemplate}>
+              <div className={classes.lastSeen}>
+                <h2>last seen</h2>
+              </div>
+            </Grid>
+            <Grid item xs={3} className={classes.gridTemplate}>
+              <img
+                src={require(`../images/treasure/${treasureImage}.png`)}
+                alt="Card"
+                className={classes.cardTemplate}
+              />
+            </Grid>
+          </Grid>
+        </div>
       </div>
     );
   }
