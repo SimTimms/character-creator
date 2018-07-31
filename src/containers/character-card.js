@@ -9,7 +9,6 @@ import RaceSelector from '../components/race-selector';
 import ClassSelector from '../components/class-selector';
 import customStyles from '../styles/index';
 import html2canvas from 'html2canvas';
-import Uploader from '../components/uploader';
 import axios from 'axios';
 import { TwitterShareButton } from 'react-share';
 
@@ -23,6 +22,11 @@ import {
   maps,
 } from '../data/index';
 
+const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
+//const apiTarget = 'http://localhost:3001/upload-char';
+
+let print = false;
+
 class CharacterCard extends Component {
   constructor(props) {
     super();
@@ -30,7 +34,7 @@ class CharacterCard extends Component {
       selectedRace: Math.floor(Math.random() * races.length),
       selectedClass: Math.floor(Math.random() * charclasses.length),
       customColor: '#000',
-      print: false,
+      twitterURL: '',
     };
     this.raceClick = this.raceClick.bind(this);
     this.printClick = this.printClick.bind(this);
@@ -44,30 +48,33 @@ class CharacterCard extends Component {
   };
 
   printClick = () => {
-    this.setState({
-      print: true,
-    });
+    print = true;
+    if (document.getElementById('printCanvas')) {
+      var element = document.getElementById('printCanvas');
+      element.parentNode.removeChild(element);
+    }
 
     html2canvas(document.getElementById('target')).then(canvas => {
       canvas.id = 'printCanvas';
+      canvas.style = 'overflow:hidden; width:0; height:0;';
       document.body.appendChild(canvas);
-      this.setState({ print: false });
+      print = false;
 
       axios
-        .post('https://char-creator-api.herokuapp.com/upload-char', {
+        .post(apiTarget, {
           filename: document
             .getElementById('printCanvas')
             .toDataURL('image/jpeg'),
         })
         .then(result => {
-          console.log(result);
+          this.setState({ twitterURL: result.data });
         });
     });
   };
 
   render() {
     const { classes } = this.props;
-    let name, surname, raceNames, classNames, map, mapImage;
+    let name, surname, raceNames, classNames, map, mapImage, story, demiseStory;
     let selectedRaceName = races[this.state.selectedRace].toLowerCase();
     let selectedClassName = charclasses[this.state.selectedClass].toLowerCase();
 
@@ -106,6 +113,8 @@ class CharacterCard extends Component {
         classNames = classList.rogue;
         break;
     }
+
+    //Randomise Attributes
     name = raceNames[
       Math.floor(Math.random() * raceNames.length)
     ].toLowerCase();
@@ -117,13 +126,19 @@ class CharacterCard extends Component {
       .replace(/ /gi, '-')
       .replace(/'/gi, '')
       .toLowerCase();
-
     const randomTreasure = Math.floor(Math.random() * 35);
     const treasureImage = `treasure-${randomTreasure}`;
+    story = stories[Math.floor(Math.random() * stories.length)].replace(
+      '[NAME]',
+      name,
+    );
+    demiseStory = demise[Math.floor(Math.random() * demise.length)]
+      .replace('[NAME]', name)
+      .replace('[MAP]', map);
 
     let raceSelector;
 
-    if (this.state.print === true) {
+    if (print === true) {
       raceSelector = (
         <img
           src={require(`../images/race/${selectedRaceName}.jpg`)}
@@ -145,7 +160,7 @@ class CharacterCard extends Component {
 
     let classSelector;
 
-    if (this.state.print === true) {
+    if (print === true) {
       classSelector = (
         <img
           src={require(`../images/class/${selectedClassName}.jpg`)}
@@ -165,14 +180,17 @@ class CharacterCard extends Component {
 
     return (
       <div id="target">
-        <TwitterShareButton
-          url={'https://char-creator-api.herokuapp.com/uploads/test.html'}
-          title={'Check This'}
-          via={'dad'}
-          className={classes.twitter}
-        >
-          asdq
-        </TwitterShareButton>
+        <button>
+          <TwitterShareButton
+            url={this.state.twitterURL}
+            title={'Check This'}
+            via={'dad'}
+            className={classes.twitter}
+            class="twitter-share-button"
+          >
+            {this.state.twitterURL}
+          </TwitterShareButton>
+        </button>
         <button onClick={this.printClick} className={classes.printButton}>
           Print
         </button>
@@ -189,10 +207,7 @@ class CharacterCard extends Component {
             <div>{raceSelector}</div>
           </Grid>
           <Grid item xs={6} className={classes.gridTemplate}>
-            <div>
-              {classSelector}
-              {console.log(this.state.print)}
-            </div>
+            <div>{classSelector}</div>
           </Grid>
         </Grid>
         <Grid container spacing={0} className={classes.templateFront}>
@@ -215,12 +230,7 @@ class CharacterCard extends Component {
             <h1 className={classes.charName}>{`${name} ${surname}`}</h1>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
-            <div className={classes.storyText}>
-              {stories[Math.floor(Math.random() * stories.length)].replace(
-                '[NAME]',
-                name,
-              )}
-            </div>
+            <div className={classes.storyText}>{story}</div>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
             <div className={classes.demiseHeader}>
@@ -228,11 +238,7 @@ class CharacterCard extends Component {
             </div>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
-            <div className={classes.demiseText}>
-              {demise[Math.floor(Math.random() * demise.length)]
-                .replace('[NAME]', name)
-                .replace('[MAP]', map)}
-            </div>
+            <div className={classes.demiseText}>{demiseStory}</div>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
             <div className={classes.lastSeen}>
