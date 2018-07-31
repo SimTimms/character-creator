@@ -148,7 +148,7 @@ class CharacterCard extends Component {
 
     return (
       <div>
-        <div id="target">
+        <div>
           <div className={classes.templateMap}>
             <img
               src={require(`../images/maps/${mapImage}.jpg`)}

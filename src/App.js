@@ -43,7 +43,7 @@ class App extends Component {
       <div className="App">
         <button onClick={this.printClick}>Print</button>
         <Tweeter twitterURL={this.state.twitterURL} />
-        <CharacterCard apiTarget={apiTarget} />
+        <CharacterCard apiTarget={apiTarget} id="target" />
       </div>
     );
   }
