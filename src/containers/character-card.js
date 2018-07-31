@@ -54,7 +54,7 @@ class CharacterCard extends Component {
       this.setState({ print: false });
 
       axios
-        .post('http://localhost:3001/upload-char', {
+        .post('https://char-creator-api.herokuapp.com/upload-char', {
           filename: document
             .getElementById('printCanvas')
             .toDataURL('image/jpeg'),
@@ -166,7 +166,7 @@ class CharacterCard extends Component {
     return (
       <div id="target">
         <TwitterShareButton
-          url={'http://localhost:3000/uploads/test.html'}
+          url={'https://char-creator-api.herokuapp.com/uploads/test.html'}
           title={'Check This'}
           via={'dad'}
           className={classes.twitter}
