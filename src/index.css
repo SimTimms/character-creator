@@ -5,5 +5,9 @@ body {
 }
 
 h1 {
-  font-family: Cardenio-Modern;
+  font-family: Cardenio-Modern-Bold;
+}
+
+h2 {
+  font-family: Cardenio-Modern-Bold;
 }

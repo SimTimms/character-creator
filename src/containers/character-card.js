@@ -8,6 +8,11 @@ import PropTypes from 'prop-types';
 import RaceSelector from '../components/race-selector';
 import ClassSelector from '../components/class-selector';
 import customStyles from '../styles/index';
+import html2canvas from 'html2canvas';
+import Uploader from '../components/uploader';
+import axios from 'axios';
+import { TwitterShareButton } from 'react-share';
+
 import {
   races,
   charclasses,
@@ -25,8 +30,10 @@ class CharacterCard extends Component {
       selectedRace: Math.floor(Math.random() * races.length),
       selectedClass: Math.floor(Math.random() * charclasses.length),
       customColor: '#000',
+      print: false,
     };
     this.raceClick = this.raceClick.bind(this);
+    this.printClick = this.printClick.bind(this);
   }
 
   raceClick = item => {
@@ -36,11 +43,33 @@ class CharacterCard extends Component {
     });
   };
 
+  printClick = () => {
+    this.setState({
+      print: true,
+    });
+
+    html2canvas(document.getElementById('target')).then(canvas => {
+      canvas.id = 'printCanvas';
+      document.body.appendChild(canvas);
+      this.setState({ print: false });
+
+      axios
+        .post('http://localhost:3001/upload-char', {
+          filename: document
+            .getElementById('printCanvas')
+            .toDataURL('image/jpeg'),
+        })
+        .then(result => {
+          console.log(result);
+        });
+    });
+  };
+
   render() {
     const { classes } = this.props;
     let name, surname, raceNames, classNames, map, mapImage;
-    let selectedRaceName = races[this.state.selectedRace];
-    let selectedClassName = charclasses[this.state.selectedClass];
+    let selectedRaceName = races[this.state.selectedRace].toLowerCase();
+    let selectedClassName = charclasses[this.state.selectedClass].toLowerCase();
 
     switch (selectedRaceName) {
       case 'elf':
@@ -59,6 +88,7 @@ class CharacterCard extends Component {
         raceNames = names.humanNames;
         break;
     }
+
     switch (selectedClassName) {
       case 'wizard':
         classNames = classList.wizard;
@@ -76,8 +106,12 @@ class CharacterCard extends Component {
         classNames = classList.rogue;
         break;
     }
-    name = raceNames[Math.floor(Math.random() * raceNames.length)];
-    surname = classNames[Math.floor(Math.random() * classNames.length)];
+    name = raceNames[
+      Math.floor(Math.random() * raceNames.length)
+    ].toLowerCase();
+    surname = classNames[
+      Math.floor(Math.random() * classNames.length)
+    ].toLowerCase();
     map = maps[Math.floor(Math.random() * maps.length)];
     mapImage = map
       .replace(/ /gi, '-')
@@ -87,8 +121,61 @@ class CharacterCard extends Component {
     const randomTreasure = Math.floor(Math.random() * 35);
     const treasureImage = `treasure-${randomTreasure}`;
 
+    let raceSelector;
+
+    if (this.state.print === true) {
+      raceSelector = (
+        <img
+          src={require(`../images/race/${selectedRaceName}.jpg`)}
+          alt={selectedRaceName}
+          className={classes.raceBack}
+        />
+      );
+    } else {
+      raceSelector = (
+        <RaceSelector
+          id="race-selector"
+          handleClick={this.raceClick}
+          selectedItem={this.state.selectedRace}
+          races={races}
+          className={classes.raceCarousel}
+        />
+      );
+    }
+
+    let classSelector;
+
+    if (this.state.print === true) {
+      classSelector = (
+        <img
+          src={require(`../images/class/${selectedClassName}.jpg`)}
+          alt={selectedClassName}
+          className={classes.classBack}
+        />
+      );
+    } else {
+      classSelector = (
+        <ClassSelector
+          selectedItem={this.state.selectedClass}
+          charClasses={charclasses}
+          className={classes.classCarousel}
+        />
+      );
+    }
+
     return (
-      <div>
+      <div id="target">
+        <TwitterShareButton
+          url={'http://localhost:3000/uploads/test.html'}
+          title={'Check This'}
+          via={'dad'}
+          className={classes.twitter}
+        >
+          asdq
+        </TwitterShareButton>
+        <button onClick={this.printClick} className={classes.printButton}>
+          Print
+        </button>
         <div className={classes.templateMap}>
           <img
             src={require(`../images/maps/${mapImage}.jpg`)}
@@ -96,33 +183,33 @@ class CharacterCard extends Component {
             alt="Map"
           />
         </div>
-
         <div className={classes.template} />
         <Grid container spacing={0} className={classes.templateBack}>
           <Grid item xs={6} className={classes.gridTemplate}>
-            <RaceSelector
-              handleClick={this.raceClick}
-              selectedItem={this.state.selectedRace}
-              races={races}
-              className={classes.raceSelector}
-            />
+            <div>{raceSelector}</div>
           </Grid>
           <Grid item xs={6} className={classes.gridTemplate}>
-            <ClassSelector
-              selectedItem={this.state.selectedClass}
-              charClasses={charclasses}
-            />
+            <div>
+              {classSelector}
+              {console.log(this.state.print)}
+            </div>
           </Grid>
         </Grid>
-
         <Grid container spacing={0} className={classes.templateFront}>
-          <Grid item xs={6} className={classes.gridTemplate}>
-            <div className={classes.raceName}>
-              {races[this.state.selectedRace]}
+          <Grid item xs={12} className={classes.gridTemplate}>
+            <div className={classes.header}>
+              <h1>an epic game of epic fails</h1>
             </div>
           </Grid>
           <Grid item xs={6} className={classes.gridTemplate}>
-            <div className={classes.className}>{selectedClassName}</div>
+            <div className={classes.raceName}>
+              <h2>{selectedRaceName}</h2>
+            </div>
+          </Grid>
+          <Grid item xs={6} className={classes.gridTemplate}>
+            <div className={classes.className}>
+              <h2>{selectedClassName}</h2>
+            </div>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
             <h1 className={classes.charName}>{`${name} ${surname}`}</h1>
@@ -136,13 +223,22 @@ class CharacterCard extends Component {
             </div>
           </Grid>
           <Grid item xs={12} className={classes.gridTemplate}>
+            <div className={classes.demiseHeader}>
+              <h2>previous party demise</h2>
+            </div>
+          </Grid>
+          <Grid item xs={12} className={classes.gridTemplate}>
             <div className={classes.demiseText}>
               {demise[Math.floor(Math.random() * demise.length)]
                 .replace('[NAME]', name)
                 .replace('[MAP]', map)}
             </div>
           </Grid>
-
+          <Grid item xs={12} className={classes.gridTemplate}>
+            <div className={classes.lastSeen}>
+              <h2>last seen</h2>
+            </div>
+          </Grid>
           <Grid item xs={3} className={classes.gridTemplate}>
             <img
               src={require(`../images/treasure/${treasureImage}.png`)}

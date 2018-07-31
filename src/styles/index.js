@@ -1,6 +1,7 @@
 import Image from '../images/template.png'; // Import using relative path
 
 const customStyles = {
+  printButton: { position: 'relative', zIndex: 100 },
   card: {
     maxWidth: 345,
     boxShadow: '10px 10px 100px #777',
@@ -12,6 +13,10 @@ const customStyles = {
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
+  },
+  header: {
+    marginTop: '5%',
+    fontSize: '2.5vw',
   },
   pos: {
     marginBottom: 12,
@@ -67,9 +72,42 @@ const customStyles = {
     width: '100%',
   },
   cardTemplate: {
-    width: '120%',
+    width: '81%',
     marginTop: '283%',
+    marginLeft: '-10%',
+  },
+  twitter: {
+    position: 'relative',
+    zIndex: 100,
+  },
+  raceBack: {
+    width: '52%',
+    marginLeft: '32%',
+    marginTop: '26%',
+  },
+  classBack: {
+    width: '52%',
+    marginLeft: '-37%',
+    marginTop: '26%',
+  },
+  raceCarousel: {
+    width: '52%',
+    marginLeft: '40%',
+    marginTop: '26%',
+  },
+  classCarousel: {
+    width: '52%',
     marginLeft: '5%',
+    marginTop: '26%',
+  },
+  demiseHeader: {
+    marginTop: '70.6%',
+    fontSize: '2.4vw',
+  },
+  lastSeen: {
+    marginTop: '88.5%',
+    marginLeft: '-15%',
+    fontSize: '2.4vw',
   },
   mapTemplate: {
     width: 182,
@@ -82,7 +120,7 @@ const customStyles = {
   charName: {
     width: '100%',
     fontSize: '5vw',
-    marginTop: '41%',
+    marginTop: '41.4%',
     marginLeft: '0%',
     color: '#FFF',
     fontWeight: 200,
@@ -91,14 +129,14 @@ const customStyles = {
     width: '100%',
     fontWeight: 200,
     fontSize: '3vw',
-    marginTop: '66%',
+    marginTop: '64.5%',
     marginLeft: '16%',
   },
   className: {
     width: '100%',
     fontWeight: 200,
     fontSize: '3vw',
-    marginTop: '66%',
+    marginTop: '64.5%',
     marginLeft: '-19%',
   },
   storyText: {
@@ -109,11 +147,11 @@ const customStyles = {
     marginLeft: '20%',
   },
   demiseText: {
-    width: '40%',
+    width: '45%',
     fontWeight: 200,
     fontSize: '2vw',
-    marginTop: '76%',
-    marginLeft: '33%',
+    marginTop: '77%',
+    marginLeft: '30%',
   },
 };
 
