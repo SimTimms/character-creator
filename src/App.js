@@ -12,8 +12,8 @@ import { withStyles } from '@material-ui/core/styles';
 import customStyles from './styles/index';
 import PropTypes from 'prop-types';
 import { races, charclasses, names, classList } from './data/index';
-//const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
-const apiTarget = 'http://localhost:3001/upload-char';
+const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
+//const apiTarget = 'http://localhost:3001/upload-char';
 
 class App extends Component {
   constructor(props) {
