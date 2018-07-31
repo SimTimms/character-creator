@@ -14,6 +14,7 @@ const RaceSelector = props => {
       onChange={props.handleClick}
       selectedItem={props.selectedItem}
       swipeable={true}
+      showArrows={true}
       className={props.className}
     >
       {props.races.map(item => {
