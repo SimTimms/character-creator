@@ -41,9 +41,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CharacterCard apiTarget={apiTarget} />
         <button onClick={this.printClick}>Print</button>
         <Tweeter twitterURL={this.state.twitterURL} />
+        <CharacterCard apiTarget={apiTarget} />
       </div>
     );
   }
