@@ -7,8 +7,6 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import customStyles from '../styles/index';
 
-import { stories, demise, maps } from '../data/index';
-
 class CharacterCard extends Component {
   constructor(props) {
     super();
@@ -20,29 +18,16 @@ class CharacterCard extends Component {
 
   render() {
     const { classes } = this.props;
-    let name, surname, map, mapImage, story, demiseStory;
+    let mapImage;
 
     //Randomise Attributes
-    name = this.props.raceNames[
-      Math.floor(Math.random() * this.props.raceNames.length)
-    ].toLowerCase();
-    surname = this.props.classNames[
-      Math.floor(Math.random() * this.props.classNames.length)
-    ].toLowerCase();
-    map = maps[Math.floor(Math.random() * maps.length)];
-    mapImage = map
+
+    const treasureImage = `treasure-${this.props.treasure}`;
+
+    mapImage = this.props.map
       .replace(/ /gi, '-')
       .replace(/'/gi, '')
       .toLowerCase();
-    const randomTreasure = Math.floor(Math.random() * 35);
-    const treasureImage = `treasure-${randomTreasure}`;
-    story = stories[Math.floor(Math.random() * stories.length)].replace(
-      '[NAME]',
-      name,
-    );
-    demiseStory = demise[Math.floor(Math.random() * demise.length)]
-      .replace('[NAME]', name)
-      .replace('[MAP]', map);
 
     return (
       <div>
@@ -71,10 +56,12 @@ class CharacterCard extends Component {
               </div>
             </Grid>
             <Grid item xs={12} className={classes.gridTemplate}>
-              <h1 className={classes.charName}>{`${name} ${surname}`}</h1>
+              <h1 className={classes.charName}>{`${this.props.name} ${
+                this.props.surname
+              }`}</h1>
             </Grid>
             <Grid item xs={12} className={classes.gridTemplate}>
-              <div className={classes.storyText}>{story}</div>
+              <div className={classes.storyText}>{this.props.story}</div>
             </Grid>
             <Grid item xs={12} className={classes.gridTemplate}>
               <div className={classes.demiseHeader}>
@@ -82,7 +69,7 @@ class CharacterCard extends Component {
               </div>
             </Grid>
             <Grid item xs={12} className={classes.gridTemplate}>
-              <div className={classes.demiseText}>{demiseStory}</div>
+              <div className={classes.demiseText}>{this.props.demiseStory}</div>
             </Grid>
             <Grid item xs={12} className={classes.gridTemplate}>
               <div className={classes.lastSeen}>

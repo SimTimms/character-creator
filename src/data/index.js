@@ -1,5 +1,5 @@
-export const races = ['halfling', 'human', 'elf', 'dwarf'];
-export const charclasses = ['barbarian', 'wizard', 'priest', 'rogue'];
+export const races = ['-', 'halfling', 'human', 'elf', 'dwarf'];
+export const charclasses = ['-', 'barbarian', 'wizard', 'priest', 'rogue'];
 export const stories = [
   "You were raised in a barn and have since forgotten to close every door you've walked through. A problem that was highlighted at the siege of Iron Gate Castle, where as the last one to take refuge you left the famous Iron Gate wide open for the besiegers.",
   'Your whole town was burned to the ground and you were forced to leave and make a living on the road. Typically there was nobody left to own up to about the fire.',

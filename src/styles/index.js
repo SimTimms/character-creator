@@ -95,6 +95,12 @@ const customStyles = {
     marginLeft: '32%',
     marginTop: '26%',
   },
+  dice: {
+    width: '50%',
+    marginTop: '-1%',
+    position: 'relative',
+    zIndex: 101,
+  },
   classBack: {
     width: '52%',
     marginLeft: '-37%',
