@@ -95,7 +95,7 @@ class App extends Component {
     this.setState({ selectedRace: item });
     this.setState({ selectedClass });
     this.setState({ selectedRaceName: races[item] });
-    this.setState({ selectedClassName: charclasses[this.state.selectedClass] });
+    this.setState({ selectedClassName: charclasses[selectedClass] });
     this.setState({ treasure });
     this.setState({ map });
     raceNames = raceFunction(this.state.selectedRaceName, names);
