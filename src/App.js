@@ -146,8 +146,10 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <button onClick={this.printClick}>Print</button>
-        <Tweeter twitterURL={this.state.twitterURL} />
+        <div style={{ height: '10px;' }}>
+          <button onClick={this.printClick}>Print</button>
+          <Tweeter twitterURL={this.state.twitterURL} />
+        </div>
         <div id="target">
           <Grid container spacing={0} className={classes.templateBack2}>
             <Grid item xs={6} className={classes.gridTemplate}>
