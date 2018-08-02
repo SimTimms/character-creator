@@ -67,7 +67,7 @@ export function raceSelectorFunction(
     return (
       <RaceSelector
         id="race-selector"
-        handleClick={raceClick}
+        //handleClick={raceClick}
         selectedItem={selectedRace}
         races={races}
         className={carouselRace}

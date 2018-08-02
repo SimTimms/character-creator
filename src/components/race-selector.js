@@ -6,7 +6,7 @@ const RaceSelector = props => {
     <Carousel
       key="races"
       showArrows={false}
-      useKeyboardArrows={true}
+      useKeyboardArrows={false}
       showThumbs={false}
       infiniteLoop={true}
       showIndicators={false}

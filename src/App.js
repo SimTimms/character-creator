@@ -82,20 +82,22 @@ class App extends Component {
       name,
       surname,
       story,
-      demiseStory;
+      demiseStory,
+      selectedClassName;
 
     //Randomisers
     map = maps[Math.floor(Math.random() * maps.length)];
     item = Math.floor(Math.random() * (races.length - 1)) + 1;
 
     selectedClass = Math.floor(Math.random() * (charclasses.length - 1)) + 1;
+    selectedClassName = charclasses[selectedClass];
     treasure = Math.floor(Math.random() * 35);
 
     //Set States
     this.setState({ selectedRace: item });
     this.setState({ selectedClass });
     this.setState({ selectedRaceName: races[item] });
-    this.setState({ selectedClassName: charclasses[selectedClass] });
+    this.setState({ selectedClassName });
     this.setState({ treasure });
     this.setState({ map });
     raceNames = raceFunction(this.state.selectedRaceName, names);

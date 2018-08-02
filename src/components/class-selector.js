@@ -11,7 +11,6 @@ const customStyles = {
 };
 
 const ClassSelector = props => {
-  console.log(props.charClasses + ' ' + props.selectedItem);
   return (
     <Carousel
       key="classes"
