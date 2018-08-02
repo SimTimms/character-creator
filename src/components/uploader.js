@@ -28,9 +28,7 @@ class UploadImage extends Component {
     formData.append('description', description);
     formData.append('selectedFile', selectedFile);
 
-    axios.post('http://localhost:3001/upload', formData).then(result => {
-      console.log(result);
-    });
+    axios.post('http://localhost:3001/upload', formData).then(result => {});
   };
 
   render() {

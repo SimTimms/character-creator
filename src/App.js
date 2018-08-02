@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import CharacterCard from './containers/character-card';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Social from './components/social';
+
 import Selectors from './components/selectors';
+import Options from './components/options';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import customStyles from './styles/index';
 import PropTypes from 'prop-types';
+
 import {
   classFunction,
   raceFunction,
@@ -25,8 +27,8 @@ import {
   stories,
   demise,
 } from './data/index';
-const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
-//const apiTarget = 'http://localhost:3001/upload-char';
+//const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
+const apiTarget = 'http://localhost:3001/upload-char';
 
 class App extends Component {
   constructor(props) {
@@ -44,12 +46,14 @@ class App extends Component {
       map: 'none',
       story: '',
       demise: '',
+      displaySocial: 'none',
     };
     this.printClick = this.printClick.bind(this);
     this.raceClick = this.raceClick.bind(this);
   }
 
   printClick = () => {
+    this.setState({ displaySocial: 'loading' });
     this.setState({ print: true });
     if (document.getElementById('printCanvas')) {
       const element = document.getElementById('printCanvas');
@@ -70,6 +74,7 @@ class App extends Component {
         .then(result => {
           this.setState({ twitterURL: result.data });
           this.setState({ print: false });
+          this.setState({ displaySocial: 'true' });
         });
     });
   };
@@ -88,6 +93,7 @@ class App extends Component {
       selectedRaceName,
       item;
 
+    this.setState({ displaySocial: 'false' });
     //Randomisers
     map = await maps[randomiser(0, maps.length)];
     item = await randomiser(1, races.length);
@@ -170,18 +176,13 @@ class App extends Component {
             demiseStory={this.state.demiseStory}
           />
         </div>
-        <div id="diceDiv">
-          <img
-            id="dice"
-            src={require(`./images/dice-anim-quick.gif`)}
-            alt="Dice"
-            className={classes.dice}
-            onClick={this.raceClick}
-          />
-        </div>
-        <Social
+        <Options
+          classes={classes}
+          raceClick={this.raceClick}
           printClick={this.printClick}
           twitterURL={this.state.twitterURL}
+          charName={`${this.state.name} ${this.state.surname}`}
+          displaySocial={this.state.displaySocial}
         />
       </div>
     );

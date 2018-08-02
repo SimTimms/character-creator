@@ -96,7 +96,7 @@ const customStyles = {
     marginTop: '26%',
   },
   dice: {
-    width: '50%',
+    width: '100%',
     marginTop: '-1%',
     position: 'relative',
     zIndex: 101,

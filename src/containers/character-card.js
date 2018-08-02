@@ -18,13 +18,8 @@ class CharacterCard extends Component {
 
   render() {
     const { classes } = this.props;
-    let mapImage;
-
-    //Randomise Attributes
-
     const treasureImage = `treasure-${this.props.treasure}`;
-
-    mapImage = this.props.map
+    const mapImage = this.props.map
       .replace(/ /gi, '-')
       .replace(/'/gi, '')
       .toLowerCase();
