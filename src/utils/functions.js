@@ -102,3 +102,7 @@ export function classSelectorFunction(
     );
   }
 }
+
+export function randomiser(startNbr, endNbr) {
+  return Math.floor(Math.random() * (endNbr - startNbr)) + startNbr;
+}

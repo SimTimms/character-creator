@@ -14,6 +14,7 @@ import {
   raceFunction,
   raceSelectorFunction,
   classSelectorFunction,
+  randomiser,
 } from './utils/functions';
 import {
   races,
@@ -73,7 +74,7 @@ class App extends Component {
     });
   };
 
-  raceClick = item => {
+  async raceClick() {
     let raceNames,
       classNames,
       map,
@@ -83,43 +84,41 @@ class App extends Component {
       surname,
       story,
       demiseStory,
-      selectedClassName;
+      selectedClassName,
+      selectedRaceName,
+      item;
 
     //Randomisers
-    map = maps[Math.floor(Math.random() * maps.length)];
-    item = Math.floor(Math.random() * (races.length - 1)) + 1;
-
-    selectedClass = Math.floor(Math.random() * (charclasses.length - 1)) + 1;
-    selectedClassName = charclasses[selectedClass];
-    treasure = Math.floor(Math.random() * 35);
+    map = await maps[randomiser(0, maps.length)];
+    item = await randomiser(1, races.length);
+    selectedClass = await randomiser(1, charclasses.length);
+    selectedClassName = await charclasses[selectedClass];
+    treasure = await randomiser(0, 35);
+    selectedRaceName = await races[item];
+    raceNames = await raceFunction(selectedRaceName, names);
+    name = await raceNames[randomiser(0, raceNames.length)].toLowerCase();
+    classNames = await classFunction(selectedClassName, classList);
+    surname = await classNames[randomiser(0, classNames.length)].toLowerCase();
+    story = await stories[randomiser(0, stories.length)].replace(
+      '[NAME]',
+      name,
+    );
+    demiseStory = await demise[randomiser(0, demise.length)]
+      .replace('[NAME]', name)
+      .replace('[MAP]', map);
 
     //Set States
     this.setState({ selectedRace: item });
     this.setState({ selectedClass });
-    this.setState({ selectedRaceName: races[item] });
+    this.setState({ selectedRaceName: selectedRaceName });
     this.setState({ selectedClassName });
     this.setState({ treasure });
     this.setState({ map });
-    raceNames = raceFunction(this.state.selectedRaceName, names);
-    name = raceNames[
-      Math.floor(Math.random() * raceNames.length)
-    ].toLowerCase();
-    classNames = classFunction(this.state.selectedClassName, classList);
     this.setState({ name });
-    surname = classNames[
-      Math.floor(Math.random() * classNames.length)
-    ].toLowerCase();
     this.setState({ surname });
-    story = stories[Math.floor(Math.random() * stories.length)].replace(
-      '[NAME]',
-      name,
-    );
-    demiseStory = demise[Math.floor(Math.random() * demise.length)]
-      .replace('[NAME]', name)
-      .replace('[MAP]', map);
     this.setState({ story });
     this.setState({ demiseStory });
-  };
+  }
 
   render() {
     const { classes } = this.props;
@@ -150,11 +149,6 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Social
-          printClick={this.printClick}
-          twitterURL={this.state.twitterURL}
-        />
-
         <div id="target" style={{ lineHeight: 1 }}>
           <Selectors
             classes={classes}
@@ -175,16 +169,20 @@ class App extends Component {
             story={this.state.story}
             demiseStory={this.state.demiseStory}
           />
-          <div id="diceDiv">
-            <img
-              id="dice"
-              src={require(`./images/dice-anim-quick.gif`)}
-              alt="Dice"
-              className={classes.dice}
-              onClick={this.raceClick}
-            />
-          </div>
         </div>
+        <div id="diceDiv">
+          <img
+            id="dice"
+            src={require(`./images/dice-anim-quick.gif`)}
+            alt="Dice"
+            className={classes.dice}
+            onClick={this.raceClick}
+          />
+        </div>
+        <Social
+          printClick={this.printClick}
+          twitterURL={this.state.twitterURL}
+        />
       </div>
     );
   }

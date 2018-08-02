@@ -72,9 +72,7 @@ class CharacterCard extends Component {
               <div className={classes.demiseText}>{this.props.demiseStory}</div>
             </Grid>
             <Grid item xs={12} className={classes.gridTemplate}>
-              <div className={classes.lastSeen}>
-                <h2>last seen</h2>
-              </div>
+              <div className={classes.lastSeen} />
             </Grid>
             <Grid item xs={3} className={classes.gridTemplate}>
               <img

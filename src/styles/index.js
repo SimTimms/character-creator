@@ -157,17 +157,17 @@ const customStyles = {
   },
   storyText: {
     width: '58%',
-    fontWeight: 200,
-    fontSize: '2vw',
+    fontWeight: 500,
+    fontSize: '2.1vw',
     marginTop: '50.5%',
     marginLeft: '20%',
   },
   demiseText: {
     width: '45%',
-    fontWeight: 200,
-    fontSize: '2vw',
-    marginTop: '77%',
-    marginLeft: '30%',
+    fontWeight: 500,
+    fontSize: '2.1vw',
+    marginTop: '78%',
+    marginLeft: '26%',
   },
 };
 
