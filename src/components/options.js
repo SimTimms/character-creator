@@ -4,20 +4,25 @@ import Grid from '@material-ui/core/Grid';
 
 const Options = props => {
   return (
-    <Grid
-      container
-      spacing={0}
-      style={{ display: 'flex', alignItems: 'center' }}
-    >
+    <Grid container spacing={0} style={{ display: 'flex', alignItems: 'top' }}>
       <Grid item xs={6}>
         <div id="diceDiv" style={{ cursor: 'pointer' }}>
-          <img
-            id="dice"
-            src={require(`../images/dice-anim-quick.gif`)}
-            alt="Dice"
-            className={props.classes.dice}
-            onClick={props.raceClick}
-          />
+          <div style={{ position: 'relative' }}>
+            <img
+              id="dice"
+              src={require(`../images/dice.jpg`)}
+              alt="Dice"
+              className={props.classes.dice}
+              onClick={props.raceClick}
+            />
+            <img
+              id="dice"
+              src={require(`../images/dice-trans.png`)}
+              alt="Dice"
+              className={props.classes.diceTrans}
+              onClick={props.raceClick}
+            />
+          </div>
         </div>
       </Grid>
       <Grid item xs={6}>
@@ -26,6 +31,7 @@ const Options = props => {
           twitterURL={props.twitterURL}
           charName={props.charName}
           displaySocial={props.displaySocial}
+          classes={props.classes}
         />
       </Grid>
     </Grid>

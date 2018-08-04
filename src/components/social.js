@@ -5,9 +5,15 @@ const Social = props => {
   let option;
   if (props.displaySocial === 'false') {
     option = (
-      <button style={{}} onClick={props.printClick}>
-        [Save Button - Image Needed]
-      </button>
+      <div id="diceDiv" style={{ cursor: 'pointer' }}>
+        <img
+          id="save"
+          src={require(`../images/save.jpg`)}
+          alt="Save"
+          className={props.classes.save}
+          onClick={props.raceClick}
+        />
+      </div>
     );
   } else if (props.displaySocial === 'none') {
     return null;

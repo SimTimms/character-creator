@@ -17,6 +17,7 @@ import {
   raceSelectorFunction,
   classSelectorFunction,
   randomiser,
+  toUpperWord,
 } from './utils/functions';
 import {
   races,
@@ -26,6 +27,7 @@ import {
   maps,
   stories,
   demise,
+  treasures,
 } from './data/index';
 const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
 //const apiTarget = 'http://localhost:3001/upload-char';
@@ -40,7 +42,7 @@ class App extends Component {
       selectedClass: 0,
       selectedRaceName: '-',
       selectedClassName: charclasses[0],
-      treasure: -1,
+      treasure: 'none',
       name: '',
       surname: '',
       map: 'none',
@@ -91,6 +93,9 @@ class App extends Component {
       demiseStory,
       selectedClassName,
       selectedRaceName,
+      gender,
+      gender2,
+      gender3,
       item;
 
     this.setState({ displaySocial: 'false' });
@@ -99,19 +104,32 @@ class App extends Component {
     item = await randomiser(1, races.length);
     selectedClass = await randomiser(1, charclasses.length);
     selectedClassName = await charclasses[selectedClass];
-    treasure = await randomiser(0, 35);
+    treasure = await treasures[randomiser(1, treasures.length)];
     selectedRaceName = await races[item];
     raceNames = await raceFunction(selectedRaceName, names);
-    name = await raceNames[randomiser(0, raceNames.length)].toLowerCase();
+    const nameObj = raceNames[randomiser(0, raceNames.length)];
+    name = await nameObj.name.toLowerCase();
+    gender = await nameObj.gender
+      .toLowerCase()
+      .replace('m', 'he')
+      .replace('f', 'she');
+    if (gender === 'he') {
+      gender2 = 'him';
+      gender3 = 'his';
+    } else {
+      gender2 = 'her';
+      gender3 = 'her';
+    }
     classNames = await classFunction(selectedClassName, classList);
     surname = await classNames[randomiser(0, classNames.length)].toLowerCase();
-    story = await stories[randomiser(0, stories.length)].replace(
-      '[NAME]',
-      name,
-    );
+    story = await stories[randomiser(0, stories.length)]
+      .replace(/\[NAME\]/gi, toUpperWord(name))
+      .replace(/\[GENDER\]/gi, gender)
+      .replace(/\[GENDER2\]/gi, gender2);
     demiseStory = await demise[randomiser(0, demise.length)]
-      .replace('[NAME]', name)
-      .replace('[MAP]', map);
+      .replace(/\[NAME\]/gi, toUpperWord(name))
+      .replace(/\[MAP\]/gi, toUpperWord(map))
+      .replace(/\[TREASURE\]/gi, treasure);
 
     //Set States
     this.setState({ selectedRace: item });

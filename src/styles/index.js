@@ -1,7 +1,12 @@
 import Image from '../images/template.png'; // Import using relative path
 
 const customStyles = {
-  printButton: { position: 'relative', zIndex: 100 },
+  printButton: {
+    position: 'relative',
+    zIndex: 100,
+    width: '100%',
+    border: 0,
+  },
   card: {
     maxWidth: 345,
     boxShadow: '10px 10px 100px #777',
@@ -98,8 +103,27 @@ const customStyles = {
   dice: {
     width: '100%',
     marginTop: '-1%',
-    position: 'relative',
+    position: 'absolute',
     zIndex: 101,
+    left: 0,
+    top: 0,
+  },
+  save: {
+    width: '100%',
+    marginTop: '-1%',
+    zIndex: 101,
+  },
+  diceTrans: {
+    '&:hover': {
+      opacity: '1',
+    },
+    width: '100%',
+    marginTop: '0%',
+    position: 'absolute',
+    zIndex: 101,
+    left: 0,
+    top: 0,
+    opacity: 0.7,
   },
   classBack: {
     width: '52%',
@@ -166,7 +190,7 @@ const customStyles = {
     width: '45%',
     fontWeight: 500,
     fontSize: '2.1vw',
-    marginTop: '78%',
+    marginTop: '77%',
     marginLeft: '26%',
   },
 };

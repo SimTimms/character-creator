@@ -18,7 +18,10 @@ class CharacterCard extends Component {
 
   render() {
     const { classes } = this.props;
-    const treasureImage = `treasure-${this.props.treasure}`;
+    const treasureImage = this.props.treasure
+      .replace(/ /gi, '-')
+      .replace(/'/gi, '')
+      .toLowerCase();
     const mapImage = this.props.map
       .replace(/ /gi, '-')
       .replace(/'/gi, '')
@@ -35,11 +38,6 @@ class CharacterCard extends Component {
         </div>
         <div className={classes.template}>
           <Grid container spacing={0} className={classes.templateFront}>
-            <Grid item xs={12} className={classes.gridTemplate}>
-              <div className={classes.header}>
-                <h1>an epic game of epic fails</h1>
-              </div>
-            </Grid>
             <Grid item xs={6} className={classes.gridTemplate}>
               <div className={classes.raceName}>
                 <h2>{this.props.selectedRaceName}</h2>
