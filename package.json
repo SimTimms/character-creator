@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^1.4.1",
     "axios": "^0.18.0",
+    "boostrap": "^2.0.0",
     "html2canvas": "^1.0.0-alpha.12",
     "react": "^16.4.1",
     "react-color": "^2.14.1",
@@ -12,6 +13,7 @@
     "react-loader": "^2.4.5",
     "react-redux": "^5.0.7",
     "react-responsive-carousel": "^3.1.41",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-share": "^2.2.0",
     "react-slider": "^0.11.2",
