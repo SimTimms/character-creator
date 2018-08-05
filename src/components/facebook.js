@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { TwitterShareButton } from 'react-share';
+import { FacebookShareButton } from 'react-share';
 import Loader from 'react-loader';
-import { TwitterIcon } from 'react-share';
-class Tweeter extends Component {
+import { FacebookIcon } from 'react-share';
+class Facebook extends Component {
   constructor(props) {
     super();
   }
@@ -19,21 +19,19 @@ class Tweeter extends Component {
     return (
       <div>
         <Loader loaded={loadedBool} options={options}>
-          <TwitterShareButton
+          <FacebookShareButton
             style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
             url={this.props.shareURL}
-            title={
+            quote={
               'This is my Hero Master character, create yours at heromaster.link'
             }
-            via={'thenobleartist'}
-            class="twitter-share-button"
           >
-            <TwitterIcon size={32} round={true} />
-            Tweet <h2 style={{ marginLeft: '5px' }}> {this.props.charName} </h2>
-          </TwitterShareButton>
+            <FacebookIcon size={32} round={true} />
+            Post <h2 style={{ marginLeft: '5px' }}> {this.props.charName} </h2>
+          </FacebookShareButton>
         </Loader>
       </div>
     );
   }
 }
-export default Tweeter;
+export default Facebook;

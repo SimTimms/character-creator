@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import CharacterCard from './containers/character-card';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
-
 import Selectors from './components/selectors';
 import Options from './components/options';
 import html2canvas from 'html2canvas';
@@ -10,6 +9,7 @@ import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import customStyles from './styles/index';
 import PropTypes from 'prop-types';
+import SocialModal from './components/social-modal';
 
 import {
   classFunction,
@@ -36,7 +36,7 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      twitterURL: '',
+      shareURL: '',
       print: false,
       selectedRace: 0,
       selectedClass: 0,
@@ -47,15 +47,27 @@ class App extends Component {
       surname: '',
       map: 'none',
       story: '',
-      demise: '',
+      demise: true,
       displaySocial: 'none',
+      open: false,
     };
     this.printClick = this.printClick.bind(this);
     this.raceClick = this.raceClick.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
   printClick = () => {
     this.setState({ displaySocial: 'loading' });
+    this.handleOpen();
     this.setState({ print: true });
     if (document.getElementById('printCanvas')) {
       const element = document.getElementById('printCanvas');
@@ -74,8 +86,9 @@ class App extends Component {
             .toDataURL('image/jpeg'),
         })
         .then(result => {
-          this.setState({ twitterURL: result.data });
+          this.setState({ shareURL: result.data });
           this.setState({ print: false });
+
           this.setState({ displaySocial: 'true' });
         });
     });
@@ -125,7 +138,8 @@ class App extends Component {
     story = await stories[randomiser(0, stories.length)]
       .replace(/\[NAME\]/gi, toUpperWord(name))
       .replace(/\[GENDER\]/gi, gender)
-      .replace(/\[GENDER2\]/gi, gender2);
+      .replace(/\[GENDER2\]/gi, gender2)
+      .replace(/\[GENDER3\]/gi, gender3);
     demiseStory = await demise[randomiser(0, demise.length)]
       .replace(/\[NAME\]/gi, toUpperWord(name))
       .replace(/\[MAP\]/gi, toUpperWord(map))
@@ -198,7 +212,13 @@ class App extends Component {
           classes={classes}
           raceClick={this.raceClick}
           printClick={this.printClick}
-          twitterURL={this.state.twitterURL}
+          handleOpen={this.handleOpen}
+          displaySocial={this.state.displaySocial}
+        />
+        <SocialModal
+          open={this.state.open}
+          handleClose={this.handleClose}
+          shareURL={this.state.shareURL}
           charName={`${this.state.name} ${this.state.surname}`}
           displaySocial={this.state.displaySocial}
         />
