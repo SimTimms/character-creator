@@ -5,8 +5,8 @@ import { withStyles } from '@material-ui/core/styles';
 import customStyles from './styles/index';
 import PropTypes from 'prop-types';
 
-//const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
-const apiTarget = 'http://localhost:3001/uploads';
+const apiTarget = 'https://char-creator-api.herokuapp.com/uploads';
+//const apiTarget = 'http://localhost:3001/uploads';
 
 class MyChar extends Component {
   constructor(props) {
