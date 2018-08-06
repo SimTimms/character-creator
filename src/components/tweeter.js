@@ -20,7 +20,12 @@ class Tweeter extends Component {
       <div>
         <Loader loaded={loadedBool} options={options}>
           <TwitterShareButton
-            style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+              width: '100%',
+            }}
             url={this.props.shareURL}
             title={
               'This is my Hero Master character, create yours at heromaster.link'

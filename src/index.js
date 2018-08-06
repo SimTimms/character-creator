@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router>
       <div>
-        <Route path="/creator" component={App} />
+        <Route path="/" component={App} />
         <Route
           path="/my-hero-master/:id"
           render={props => <MyChar {...props} />}
@@ -23,6 +23,6 @@ ReactDOM.render(
       </div>
     </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 registerServiceWorker();

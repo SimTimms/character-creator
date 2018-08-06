@@ -13,6 +13,7 @@ function getModalStyle() {
     top: `${top}%`,
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
+    width: '100%',
   };
 }
 
@@ -42,8 +43,16 @@ class SocialModal extends Component {
           onClose={handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <Tweeter shareURL={shareURL} charName={charName} />
-            <Facebook shareURL={shareURL} charName={charName} />
+            <Tweeter
+              shareURL={shareURL}
+              charName={charName}
+              displaySocial={this.props.displaySocial}
+            />
+            <Facebook
+              shareURL={shareURL}
+              charName={charName}
+              displaySocial={this.props.displaySocial}
+            />
           </div>
         </Modal>
       </div>

@@ -1,6 +1,9 @@
 import Image from '../images/template.png'; // Import using relative path
 
 const customStyles = {
+  modalClass: {
+    width: '100%',
+  },
   printButton: {
     position: 'relative',
     zIndex: 100,
