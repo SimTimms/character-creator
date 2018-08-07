@@ -30,7 +30,6 @@ import {
   treasures,
 } from './data/index';
 const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
-//const imageReturnURL = 'https://char-creator.herokuapp.com/my-hero-master';
 //const apiTarget = 'http://localhost:3001/upload-char';
 
 class App extends Component {
