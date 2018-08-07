@@ -88,7 +88,6 @@ class App extends Component {
         .then(result => {
           this.setState({ shareURL: `${result.data}` });
           this.setState({ print: false });
-
           this.setState({ displaySocial: 'true' });
         });
     });
