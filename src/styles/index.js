@@ -115,6 +115,9 @@ const customStyles = {
     width: '100%',
     marginTop: '-1%',
     zIndex: 101,
+    position: 'absolute',
+    left: 0,
+    top: 0,
   },
   diceTrans: {
     '&:hover': {

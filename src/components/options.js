@@ -26,13 +26,15 @@ const Options = props => {
         </div>
       </Grid>
       <Grid item xs={6}>
-        <Social
-          printClick={props.printClick}
-          twitterURL={props.twitterURL}
-          charName={props.charName}
-          displaySocial={props.displaySocial}
-          classes={props.classes}
-        />
+        <div style={{ position: 'relative' }}>
+          <Social
+            printClick={props.printClick}
+            twitterURL={props.twitterURL}
+            charName={props.charName}
+            displaySocial={props.displaySocial}
+            classes={props.classes}
+          />
+        </div>
       </Grid>
     </Grid>
   );

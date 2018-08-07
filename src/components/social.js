@@ -2,7 +2,7 @@ import React from 'react';
 
 const Social = props => {
   let option;
-  if (props.displaySocial === 'false') {
+  if (props.displaySocial !== 'none') {
     option = (
       <div id="diceDiv" style={{ cursor: 'pointer' }}>
         <img

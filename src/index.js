@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import MyChar from './MyChar';
+import MyCharEmbed from './views/MyCharEmbed';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
@@ -15,10 +15,10 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router>
       <div>
-        <Route path="/" component={App} />
+        <Route path="/creator" component={App} />
         <Route
-          path="/my-hero-master/:id"
-          render={props => <MyChar {...props} />}
+          path="/my-hero-master-embed/:id"
+          render={props => <MyCharEmbed {...props} />}
         />
       </div>
     </Router>

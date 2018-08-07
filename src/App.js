@@ -17,7 +17,7 @@ import {
   raceSelectorFunction,
   classSelectorFunction,
   randomiser,
-  toUpperWord
+  toUpperWord,
 } from './utils/functions';
 import {
   races,
@@ -27,12 +27,11 @@ import {
   maps,
   stories,
   demise,
-  treasures
+  treasures,
 } from './data/index';
-const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
-const imageReturnURL = 'https://char-creator.herokuapp.com/my-hero-master';
-//const imageReturnURL = 'http://localhost:3001/my-hero-master';
-//const apiTarget = 'http://localhost:3001/upload-char';
+//const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
+//const imageReturnURL = 'https://char-creator.herokuapp.com/my-hero-master';
+const apiTarget = 'http://localhost:3001/upload-char';
 
 class App extends Component {
   constructor(props) {
@@ -51,7 +50,7 @@ class App extends Component {
       story: '',
       demise: true,
       displaySocial: 'none',
-      open: false
+      open: false,
     };
     this.printClick = this.printClick.bind(this);
     this.raceClick = this.raceClick.bind(this);
@@ -85,11 +84,10 @@ class App extends Component {
         .post(apiTarget, {
           filename: document
             .getElementById('printCanvas')
-            .toDataURL('image/jpeg')
+            .toDataURL('image/jpeg'),
         })
         .then(result => {
-          console.log(result);
-          this.setState({ shareURL: `${imageReturnURL}/${result.data.id}` });
+          this.setState({ shareURL: `${result.data}` });
           this.setState({ print: false });
 
           this.setState({ displaySocial: 'true' });
@@ -172,7 +170,7 @@ class App extends Component {
       this.raceClick,
       this.state.selectedRace,
       races,
-      classes.raceCarousel
+      classes.raceCarousel,
     );
 
     let classSelector;
@@ -183,7 +181,7 @@ class App extends Component {
       classes.classBack,
       this.state.selectedClass,
       charclasses,
-      classes.classCarousel
+      classes.classCarousel,
     );
 
     if (this.state.print === true) {
@@ -231,7 +229,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
 export default withStyles(customStyles)(App);
