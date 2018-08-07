@@ -74,12 +74,11 @@ class App extends Component {
       element.parentNode.removeChild(element);
     }
 
-    //document.getElementById('target').style.width = '900px';
     html2canvas(document.getElementById('target'), {
       windowWidth: '1400px',
     }).then(canvas => {
       canvas.id = 'printCanvas';
-
+      canvas.style = 'overflow:hidden; width:0; height:0; ';
       document.body.appendChild(canvas);
 
       axios
