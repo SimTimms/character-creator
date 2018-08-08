@@ -208,6 +208,7 @@ class App extends Component {
       case 'ios 10':
       case 'ios 9':
       case 'ios 8':
+      case 'safari 11':
         if (this.state.supported === false) this.setState({ supported: true });
         break;
 
@@ -269,7 +270,8 @@ class App extends Component {
             <br />
             firefox 61, firefox 60
             <br />
-            opera 54, ios 11, ios 10, ios 9, ios 8
+            opera 54, ios 11, ios 10, ios 9, ios 8<br />
+            safari 11
           </p>
         </div>
       );
