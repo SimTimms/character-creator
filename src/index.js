@@ -15,11 +15,11 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router>
       <div>
-        <Route path="/creator" component={App} />
         <Route
           path="/my-hero-master-embed/:id"
           render={props => <MyCharEmbed {...props} />}
         />
+        <Route path="/" component={App} />
       </div>
     </Router>
   </Provider>,
