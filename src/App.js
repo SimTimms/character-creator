@@ -278,7 +278,6 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          {browser.name} {versionInit}
           <div id="target" style={{ lineHeight: 1 }}>
             <Selectors
               classes={classes}
