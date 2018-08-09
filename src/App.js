@@ -32,8 +32,8 @@ import {
 
 const apiTarget = 'https://char-creator-api.herokuapp.com/upload-char';
 //const apiTarget = 'http://localhost:3001/upload-char';
-
 const browser = detect();
+let supported = false;
 
 class App extends Component {
   constructor(props) {
@@ -53,7 +53,6 @@ class App extends Component {
       demise: true,
       displaySocial: 'none',
       open: false,
-      supported: false,
     };
     this.printClick = this.printClick.bind(this);
     this.raceClick = this.raceClick.bind(this);
@@ -63,7 +62,7 @@ class App extends Component {
   }
   okSupported = () => {
     console.log('ok');
-    this.setState({ supported: true });
+    supported = true;
   };
   handleOpen = () => {
     this.setState({ open: true });
@@ -209,14 +208,15 @@ class App extends Component {
       case 'ios 9':
       case 'ios 8':
       case 'safari 11':
-        if (this.state.supported === false) this.setState({ supported: true });
+        supported = true;
         break;
 
       default:
+        supported = false;
         break;
     }
 
-    if (this.state.supported === false) {
+    if (supported === false) {
       return (
         <div className="App">
           <img
