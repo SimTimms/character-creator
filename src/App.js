@@ -312,8 +312,6 @@ class App extends Component {
             charName={`${this.state.name} ${this.state.surname}`}
             displaySocial={this.state.displaySocial}
           />
-          {browser.name}
-          {versionInit}
         </div>
       );
     }
