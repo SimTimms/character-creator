@@ -23,7 +23,7 @@ class Facebook extends Component {
             style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
             url={this.props.shareURL}
             quote={
-              'This is my Hero Master character, create yours at heromaster.link'
+              'Check out the hilarious character I just made in the Hero Master: An Epic Game of Epic Fails character generator! Create you own, learn more about the game and claim your free gift here: https://thenobleartist.com/heromastergame Launching on Kickstarter 18th September 2018 #boardgames #games'
             }
           >
             <FacebookIcon size={32} round={true} />

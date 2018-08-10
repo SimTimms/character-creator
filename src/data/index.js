@@ -5,7 +5,7 @@ export const stories = [
   "[NAME]'s whole town was burned to the ground and [GENDER] was forced to leave to make a living on the road. Typically there was nobody left to own up to about the fire.",
   '[NAME] studied an ancient combat technique for years, becoming one of the greatest talents known in the land. Having slipped getting out the bath and landing head first, [GENDER] forgot everything... Easy come easy go.',
   "On the deathbed of [NAME]'s father, the old man produced the exquisite family sword [NAME] had desired since childhood. Before he could give his solemn speech [NAME] snatched it with a chuckle and went outside to swish it around, breaking it before the old man could breathe his dying breath.",
-  "[NAME]'s mother was a fighter in the resistance. Every day she fought for [NAME]'s freedom. For [NAME]'s freedom to choose a way of life. And now [NAME] chooses to eat cereal without milk, and doesn't bother with deodorant. Life is pretty good for [GENDER].",
+  "[NAME]'s mother was a fighter in the resistance. Every day she fought for [NAME]'s freedom. For [NAME]'s freedom to choose a way of life. And now [NAME] chooses to eat cereal without milk, and doesn't bother with deodorant. Life is pretty good for [GENDER2].",
   '[NAME] never amounted to much. [GENDER] never had any ambitions, never had any drive, and never had any money. What [NAME] did have was a chicken, called Kevin.',
   "[NAME]'s mother was accused of being a witch, which, in hindsight [GENDER] has always regretted.",
   '[NAME]\'s father was one of the great generals of this age. Valiant in combat, accurate in decision, apart from when [NAME] turned to him and said "pull my finger" atop that live volcano.',

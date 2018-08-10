@@ -134,6 +134,7 @@ class App extends Component {
       .toLowerCase()
       .replace('m', 'he')
       .replace('f', 'she');
+
     if (gender === 'he') {
       gender2 = 'him';
       gender3 = 'his';
