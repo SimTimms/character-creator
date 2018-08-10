@@ -14,7 +14,7 @@ export const stories = [
   '[NAME] idolised the brave warriors of the village. [GENDER] would follow them everywhere singing and clapping and cheering for them. And just as they were waiting to ambush the great orcish force descending on the village, [NAME] sang the best and loudest. Afterwards, looking around at the horrific defeat, [NAME] took a little comfort they got the send off they would have wanted.',
   "[NAME] was married early, as was the custom of the village. As with all new spouses [GENDER] must traverse the wilderness and gain combat prowess. [GENDER] has a feeling it's going to be a long trip.",
   "During [NAME]'s teens, a friend had been injured by a bear. \"I've got an idea\" screamed [NAME]. [GENDER] was glad the last look on the friend's face was the look of hope, before [NAME] dropped him and carried on running.",
-  "There was a myth that surrounded [NAME]'s family, that they were related to the gods, and born to rule. The myth was quickly dispelled when [NAME] began to talk however, even the gods don't work THAT mysteriously.",
+  "There was a myth that surrounded [NAME]'s family, that [GENDER] was related to the gods, and born to rule. The myth was quickly dispelled when [GENDER] began to talk however, even the gods don't work THAT mysteriously.",
   'As a child, [NAME] was a simple peasant, and was proud to have never taken a step backward in life.',
   'Countless moons had passed since [NAME] left the homestead. The fact that [GENDER] could only count to three seemed irrelevant.',
   "The thought of combat turned [NAME]'s stomach, more of a lover than a fighter. It's just [NAME] had ended up in more fights than in love. Maybe it was the black eyes, split lip, broken nose and cauliflower ears that put people off.",
