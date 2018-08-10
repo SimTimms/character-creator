@@ -149,14 +149,14 @@ class App extends Component {
       .replace(/\[GENDER\]/gi, gender)
       .replace(/\[GENDER2\]/gi, gender2)
       .replace(/\[GENDER3\]/gi, gender3)
-      .replace(/. s/gi, '. S')
-      .replace(/. h/gi, '. H');
+      .replace(/\. s/gi, '. S')
+      .replace(/\. h/gi, '. H');
     demiseStory = await demise[randomiser(0, demise.length)]
       .replace(/\[NAME\]/gi, toUpperWord(name))
       .replace(/\[MAP\]/gi, toUpperWord(map))
       .replace(/\[TREASURE\]/gi, treasure)
-      .replace(/. s/gi, '. S')
-      .replace(/. h/gi, '. H');
+      .replace(/\. s/gi, '. S')
+      .replace(/\. h/gi, '. H');
 
     //Set States
     this.setState({ selectedRace: item });
