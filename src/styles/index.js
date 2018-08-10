@@ -175,14 +175,14 @@ const customStyles = {
     width: '100%',
     fontWeight: 150,
     fontSize: '2.4vw',
-    marginTop: '66.5%',
+    marginTop: '66.3%',
     marginLeft: '16%',
   },
   className: {
     width: '100%',
     fontWeight: 150,
     fontSize: '2.4vw',
-    marginTop: '66.5%',
+    marginTop: '66.3%',
     marginLeft: '-19%',
   },
   storyText: {
