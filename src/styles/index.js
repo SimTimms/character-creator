@@ -148,7 +148,7 @@ const customStyles = {
   },
   demiseHeader: {
     marginTop: '70.6%',
-    fontSize: '2.4vw',
+    fontSize: '2.4vw !important',
   },
   lastSeen: {
     marginTop: '88.5%',
