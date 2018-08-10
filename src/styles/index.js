@@ -153,7 +153,7 @@ const customStyles = {
   lastSeen: {
     marginTop: '88.5%',
     marginLeft: '-15%',
-    fontSize: '2.4vw',
+    fontSize: '2.4vw !important',
   },
   mapTemplate: {
     width: 182,
