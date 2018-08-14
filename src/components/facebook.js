@@ -20,7 +20,13 @@ class Facebook extends Component {
       <div>
         <Loader loaded={loadedBool} options={options}>
           <FacebookShareButton
-            style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              cursor: 'pointer',
+              width: '400px',
+              margin: 'auto',
+            }}
             url={this.props.shareURL}
             quote={
               'Check out the hilarious character I just made in the Hero Master: An Epic Game of Epic Fails character generator! Create you own, learn more about the game and claim your free gift here: https://thenobleartist.com/heromastergame Launching on Kickstarter 18th September 2018 #boardgames #games'

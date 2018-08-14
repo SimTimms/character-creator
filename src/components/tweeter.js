@@ -24,7 +24,8 @@ class Tweeter extends Component {
               display: 'flex',
               alignItems: 'center',
               cursor: 'pointer',
-              width: '100%',
+              width: '400px',
+              margin: 'auto',
             }}
             url={this.props.shareURL}
             title={
