@@ -30,8 +30,8 @@ import {
   treasures,
 } from './data/index';
 
-//const apiTarget = 'https://hero-master-characters.herokuapp.com/upload-char';
-const apiTarget = 'http://localhost:3001/upload-char';
+const apiTarget = 'https://hero-master-characters.herokuapp.com/upload-char';
+//const apiTarget = 'http://localhost:3001/upload-char';
 const browser = detect();
 let supported = false;
 
