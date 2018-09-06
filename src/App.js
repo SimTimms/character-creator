@@ -198,22 +198,49 @@ class App extends Component {
     );
     const versionInit = browser.version.split('.')[0];
     switch (`${browser.name} ${versionInit}`) {
+      case 'edge 20':
+      case 'edge 19':
+      case 'edge 18':
       case 'edge 17':
+      case 'chrome 71':
+      case 'chrome 70':
+      case 'chrome 69':
       case 'chrome 68':
       case 'chrome 67':
       case 'chrome 66':
       case 'chrome 65':
       case 'chrome 64':
       case 'chrome 63':
+      case 'ie 13':
+      case 'ie 12':
       case 'ie 11':
+      case 'firefox 65':
+      case 'firefox 64':
+      case 'firefox 63':
+      case 'firefox 62':
       case 'firefox 61':
       case 'firefox 60':
+      case 'opera 57':
+      case 'opera 56':
+      case 'opera 55':
       case 'opera 54':
+      case 'ios 14':
+      case 'ios 13':
+      case 'ios 12':
       case 'ios 11':
       case 'ios 10':
       case 'ios 9':
       case 'ios 8':
+      case 'ios-webview 610':
+      case 'ios-webview 609':
+      case 'ios-webview 608':
+      case 'ios-webview 607':
+      case 'ios-webview 606':
       case 'ios-webview 605':
+      case 'safari 15':
+      case 'safari 14':
+      case 'safari 13':
+      case 'safari 12':
       case 'safari 11':
         supported = true;
         break;
