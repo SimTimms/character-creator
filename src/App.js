@@ -61,7 +61,6 @@ class App extends Component {
     this.okSupported = this.okSupported.bind(this);
   }
   okSupported = () => {
-    console.log('ok');
     supported = true;
   };
   handleOpen = () => {
@@ -217,7 +216,7 @@ class App extends Component {
         break;
 
       default:
-        supported = false;
+        supported = true;
         break;
     }
 
