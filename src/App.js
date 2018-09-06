@@ -211,12 +211,13 @@ class App extends Component {
       case 'ios 10':
       case 'ios 9':
       case 'ios 8':
+      case 'ios-webview 605':
       case 'safari 11':
         supported = true;
         break;
 
       default:
-        supported = true;
+        supported = false;
         break;
     }
 
