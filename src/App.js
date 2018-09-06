@@ -223,7 +223,7 @@ class App extends Component {
         break;
     }
 
-    if (supported === false && this.overideSupport === false) {
+    if (supported === false && this.state.overideSupport === false) {
       return (
         <div className="App">
           <img
