@@ -53,6 +53,7 @@ class App extends Component {
       demise: true,
       displaySocial: 'none',
       open: false,
+      overideSupport: false,
     };
     this.printClick = this.printClick.bind(this);
     this.raceClick = this.raceClick.bind(this);
@@ -61,7 +62,7 @@ class App extends Component {
     this.okSupported = this.okSupported.bind(this);
   }
   okSupported = () => {
-    supported = true;
+    this.setState({ overideSupport: true });
     this.setState({ story: '-' });
   };
   handleOpen = () => {
@@ -222,7 +223,7 @@ class App extends Component {
         break;
     }
 
-    if (supported === false) {
+    if (supported === false && this.overideSupport === false) {
       return (
         <div className="App">
           <img
