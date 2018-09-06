@@ -62,7 +62,7 @@ class App extends Component {
   }
   okSupported = () => {
     supported = true;
-    this.setState({ story: '' });
+    this.setState({ story: '-' });
   };
   handleOpen = () => {
     this.setState({ open: true });
