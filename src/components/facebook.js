@@ -29,7 +29,7 @@ class Facebook extends Component {
             }}
             url={this.props.shareURL}
             quote={
-              'Check out the hilarious character I just made in the Hero Master: An Epic Game of Epic Fails character generator! Create you own, learn more about the game and claim your free gift here: https://thenobleartist.com/heromastergame Launching on Kickstarter 18th September 2018 #boardgames #games'
+              'Check out the character I just made in the Hero Master: An Epic Game of Epic Fails random character generator! Create you own, learn more about the game: now LIVE #Kickstarter https://thenobleartist.com/heromastergame  https://hero-master-characters.herokuapp.com/hero/1538662667048 via @thenobleartist'
             }
           >
             <FacebookIcon size={32} round={true} />
