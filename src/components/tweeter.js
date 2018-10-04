@@ -29,7 +29,7 @@ class Tweeter extends Component {
             }}
             url={this.props.shareURL}
             title={
-              'Check out the character I just made in the Hero Master: An Epic Game of Epic Fails random character generator! Create you own, learn more about the game: now LIVE #Kickstarter https://thenobleartist.com/heromastergame  https://hero-master-characters.herokuapp.com/hero/1538662667048 via @thenobleartist'
+              'Check out the character I just made in the Hero Master: An Epic Game of Epic Fails random character generator! Create you own, learn more about the game: now LIVE #Kickstarter https://thenobleartist.com/heromastergame'
             }
             via={'thenobleartist'}
             class="twitter-share-button"
