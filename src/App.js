@@ -250,105 +250,44 @@ class App extends Component {
         break;
     }
 
-    if (supported === false && this.state.overideSupport === false) {
-      return (
-        <div className="App">
-          <img
-            src={require(`./images/class/rogue.jpg`)}
-            alt="Rogue"
-            style={{
-              borderRadius: '50%',
-              boxShadow: '10px 10px 10px rgba(0,0,0,0.3)',
-              width: 100,
-              height: 100,
-              border: '10px solid white',
-              marginTop: 40,
-            }}
-          />
-          <h1>unsupported browser?</h1>
-          <p>
-            We're not sure this hero-master app will work with {browser.name}{' '}
-            {versionInit}.
-          </p>
-          <p>
-            If you notice any problems try
-            <br />
-            switching devices, changing browsers or <br />
-            installing the latest version of {browser.name}.
-          </p>
-          <button
-            onClick={() => {
-              this.okSupported();
-            }}
-            style={{
-              padding: 10,
-              background: 'grey',
-              border: '1px solid #444',
-              color: 'white',
-              borderRadius: 5,
-              cursor: 'pointer',
-              boxShadow: '5px 5px 8px rgba(0,0,0,0.2)',
-              margin: 30,
-              fontSize: 16,
-            }}
-          >
-            Continue
-          </button>
-          <p style={{ fontSize: 12, color: 'grey' }}>
-            Tested Browsers: <br />
-            edge 17
-            <br />
-            chrome 68, chrome 67, chrome 66, chrome 65, chrome 64, chrome 63
-            <br />
-            ie 11
-            <br />
-            firefox 61, firefox 60
-            <br />
-            opera 54, ios 11, ios 10, ios 9, ios 8<br />
-            safari 11
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <div className="App">
-          <div id="target" style={{ lineHeight: 1 }}>
-            <Selectors
-              classes={classes}
-              classSelector={classSelector}
-              raceSelector={raceSelector}
-            />
-            <CharacterCard
-              apiTarget={apiTarget}
-              selectedRaceName={this.state.selectedRaceName}
-              selectedClassName={this.state.selectedClassName}
-              selectedClass={this.state.selectedClass}
-              selectedRace={this.state.selectedRace}
-              treasure={this.state.treasure}
-              map={this.state.map}
-              name={this.state.name}
-              surname={this.state.surname}
-              story={this.state.story}
-              demiseStory={this.state.demiseStory}
-            />
-          </div>
-          <Options
+    return (
+      <div className="App">
+        <div id="target" style={{ lineHeight: 1 }}>
+          <Selectors
             classes={classes}
-            raceClick={this.raceClick}
-            printClick={this.printClick}
-            handleOpen={this.handleOpen}
-            displaySocial={this.state.displaySocial}
+            classSelector={classSelector}
+            raceSelector={raceSelector}
           />
-          <SocialModal
-            open={this.state.open}
-            handleClose={this.handleClose}
-            shareURL={this.state.shareURL}
-            charName={`${this.state.name} ${this.state.surname}`}
-            displaySocial={this.state.displaySocial}
+          <CharacterCard
+            apiTarget={apiTarget}
+            selectedRaceName={this.state.selectedRaceName}
+            selectedClassName={this.state.selectedClassName}
+            selectedClass={this.state.selectedClass}
+            selectedRace={this.state.selectedRace}
+            treasure={this.state.treasure}
+            map={this.state.map}
+            name={this.state.name}
+            surname={this.state.surname}
+            story={this.state.story}
+            demiseStory={this.state.demiseStory}
           />
         </div>
-      );
-    }
+        <Options
+          classes={classes}
+          raceClick={this.raceClick}
+          printClick={this.printClick}
+          handleOpen={this.handleOpen}
+          displaySocial={this.state.displaySocial}
+        />
+        <SocialModal
+          open={this.state.open}
+          handleClose={this.handleClose}
+          shareURL={this.state.shareURL}
+          charName={`${this.state.name} ${this.state.surname}`}
+          displaySocial={this.state.displaySocial}
+        />
+      </div>
+    );
   }
 }
 
