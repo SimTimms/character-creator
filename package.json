@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.4.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "boostrap": "^2.0.0",
     "detect-browser": "^3.0.0",
     "html2canvas": "^1.0.0-alpha.12",
