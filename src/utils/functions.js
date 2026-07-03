@@ -1,6 +1,7 @@
 import React from 'react';
 import RaceSelector from '../components/race-selector';
 import ClassSelector from '../components/class-selector';
+import { getImageAsset } from './image-asset';
 
 export function raceFunction(item, names) {
   let raceNames;
@@ -58,7 +59,7 @@ export function raceSelectorFunction(
   if (print === true) {
     return (
       <img
-        src={require(`../images/race/${src}.jpg`)}
+        src={getImageAsset(`race/${src}.jpg`)}
         alt={src}
         className={classVar}
       />
@@ -87,7 +88,7 @@ export function classSelectorFunction(
   if (print === true) {
     return (
       <img
-        src={require(`../images/class/${src}.jpg`)}
+        src={getImageAsset(`class/${src}.jpg`)}
         alt={src}
         className={classVar}
       />

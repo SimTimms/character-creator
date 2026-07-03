@@ -2,6 +2,7 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { getImageAsset } from '../utils/image-asset';
 
 const customStyles = {
   carousel: {
@@ -28,7 +29,7 @@ const WeaponSelector = props => {
       {props.races.map(item => {
         return (
           <div key={item}>
-            <img src={require('../images/orc.jpg')} alt="ss" />
+            <img src={getImageAsset('orc.jpg')} alt="ss" />
             <p className="legend">{item}</p>
           </div>
         );

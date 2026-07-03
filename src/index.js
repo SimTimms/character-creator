@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import MyCharEmbed from './views/MyCharEmbed';
 import reducers from './reducers';
-import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -25,4 +24,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
-registerServiceWorker();

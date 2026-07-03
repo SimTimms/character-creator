@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import CharacterCard from './containers/character-card';
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Selectors from './components/selectors';
 import Options from './components/options';
-import html2canvas from 'html2canvas';
-import axios from 'axios';
 import { withStyles } from '@material-ui/core/styles';
 import customStyles from './styles/index';
 import PropTypes from 'prop-types';
-import SocialModal from './components/social-modal';
 import { detect } from 'detect-browser';
 import {
   classFunction,
@@ -31,7 +28,6 @@ import {
 } from './data/index';
 
 const apiTarget = 'https://hero-master-characters.herokuapp.com/upload-char';
-//const apiTarget = 'http://localhost:3001/upload-char';
 const browser = detect();
 let supported = false;
 
@@ -39,7 +35,6 @@ class App extends Component {
   constructor(props) {
     super();
     this.state = {
-      shareURL: '',
       print: false,
       selectedRace: 0,
       selectedClass: 0,
@@ -51,58 +46,15 @@ class App extends Component {
       map: 'none',
       story: '',
       demise: true,
-      displaySocial: 'none',
-      open: false,
       overideSupport: false,
     };
-    this.printClick = this.printClick.bind(this);
     this.raceClick = this.raceClick.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
     this.okSupported = this.okSupported.bind(this);
   }
   okSupported = () => {
     this.setState({ overideSupport: true });
     this.setState({ story: '-' });
   };
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-
-  printClick = () => {
-    this.setState({ displaySocial: 'loading' });
-    this.handleOpen();
-    this.setState({ print: true });
-    if (document.getElementById('printCanvas')) {
-      const element = document.getElementById('printCanvas');
-      element.parentNode.removeChild(element);
-    }
-
-    html2canvas(document.getElementById('target'), {
-      windowWidth: '900px',
-    }).then(canvas => {
-      canvas.id = 'printCanvas';
-      canvas.style = 'overflow:hidden; width:0; height:0; ';
-      document.body.appendChild(canvas);
-
-      axios
-        .post(apiTarget, {
-          filename: document
-            .getElementById('printCanvas')
-            .toDataURL('image/jpeg'),
-        })
-        .then(result => {
-          this.setState({ shareURL: `${result.data}` });
-          this.setState({ print: false });
-          this.setState({ displaySocial: 'true' });
-        });
-    });
-  };
-
   async raceClick() {
     let raceNames,
       classNames,
@@ -120,7 +72,6 @@ class App extends Component {
       gender3,
       item;
 
-    this.setState({ displaySocial: 'false' });
     //Randomisers
     map = await maps[randomiser(0, maps.length)];
     item = await randomiser(1, races.length);
@@ -252,40 +203,31 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div id="target" style={{ lineHeight: 1 }}>
-          <Selectors
-            classes={classes}
-            classSelector={classSelector}
-            raceSelector={raceSelector}
-          />
-          <CharacterCard
-            apiTarget={apiTarget}
-            selectedRaceName={this.state.selectedRaceName}
-            selectedClassName={this.state.selectedClassName}
-            selectedClass={this.state.selectedClass}
-            selectedRace={this.state.selectedRace}
-            treasure={this.state.treasure}
-            map={this.state.map}
-            name={this.state.name}
-            surname={this.state.surname}
-            story={this.state.story}
-            demiseStory={this.state.demiseStory}
-          />
+        <div className="appViewport" style={{background:'./images/hero-back.png'}}>
+          <div id="target" className="targetFrame">
+            <div className="cardStage">
+              <Selectors
+                classes={classes}
+                classSelector={classSelector}
+                raceSelector={raceSelector}
+              />
+              <CharacterCard
+                apiTarget={apiTarget}
+                selectedRaceName={this.state.selectedRaceName}
+                selectedClassName={this.state.selectedClassName}
+                selectedClass={this.state.selectedClass}
+                selectedRace={this.state.selectedRace}
+                treasure={this.state.treasure}
+                map={this.state.map}
+                name={this.state.name}
+                surname={this.state.surname}
+                story={this.state.story}
+                demiseStory={this.state.demiseStory}
+              />
+            </div>
+            <Options classes={classes} raceClick={this.raceClick} className="rollStage" />
+          </div>
         </div>
-        <Options
-          classes={classes}
-          raceClick={this.raceClick}
-          printClick={this.printClick}
-          handleOpen={this.handleOpen}
-          displaySocial={this.state.displaySocial}
-        />
-        <SocialModal
-          open={this.state.open}
-          handleClose={this.handleClose}
-          shareURL={this.state.shareURL}
-          charName={`${this.state.name} ${this.state.surname}`}
-          displaySocial={this.state.displaySocial}
-        />
       </div>
     );
   }

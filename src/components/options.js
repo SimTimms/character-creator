@@ -1,42 +1,28 @@
 import React from 'react';
-import Social from './social';
-import Grid from '@material-ui/core/Grid';
+import { getImageAsset } from '../utils/image-asset';
 
 const Options = props => {
   return (
-    <Grid container spacing={0} style={{ display: 'flex', alignItems: 'top' }}>
-      <Grid item xs={6}>
-        <div id="diceDiv" style={{ cursor: 'pointer' }}>
-          <div style={{ position: 'relative' }}>
-            <img
-              id="dice"
-              src={require(`../images/dice.jpg`)}
-              alt="Dice"
-              className={props.classes.dice}
-              onClick={props.raceClick}
-            />
-            <img
-              id="dice"
-              src={require(`../images/dice-trans.png`)}
-              alt="Dice"
-              className={props.classes.diceTrans}
-              onClick={props.raceClick}
-            />
-          </div>
-        </div>
-      </Grid>
-      <Grid item xs={6}>
-        <div style={{ position: 'relative' }}>
-          <Social
-            printClick={props.printClick}
-            twitterURL={props.twitterURL}
-            charName={props.charName}
-            displaySocial={props.displaySocial}
-            classes={props.classes}
+    <div className={props.className}>
+      <div id="diceDiv" style={{ cursor: 'pointer', width: '100%' }}>
+        <div style={{ position: 'relative', width: '100%', paddingTop: '100%' }}>
+          <img
+            id="dice"
+            src={getImageAsset('dice.jpg')}
+            alt="Dice"
+            className={props.classes.dice}
+            onClick={props.raceClick}
+          />
+          <img
+            id="dice"
+            src={getImageAsset('dice-trans.png')}
+            alt="Dice"
+            className={props.classes.diceTrans}
+            onClick={props.raceClick}
           />
         </div>
-      </Grid>
-    </Grid>
+      </div>
+    </div>
   );
 };
 

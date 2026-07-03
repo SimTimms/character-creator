@@ -1,4 +1,5 @@
 import React from 'react';
+import { getImageAsset } from '../utils/image-asset';
 
 const Social = props => {
   let option;
@@ -7,7 +8,7 @@ const Social = props => {
       <div id="diceDiv" style={{ cursor: 'pointer' }}>
         <img
           id="save"
-          src={require(`../images/save.jpg`)}
+          src={getImageAsset('save.jpg')}
           alt="Save"
           className={props.classes.save}
           onClick={props.printClick}

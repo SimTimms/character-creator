@@ -24,7 +24,7 @@ const customStyles = {
   },
   header: {
     marginTop: '5%',
-    fontSize: '2.5vw',
+    fontSize: '2.5vmin',
   },
   pos: {
     marginBottom: 12,
@@ -148,12 +148,12 @@ const customStyles = {
   },
   demiseHeader: {
     marginTop: '70.6%',
-    fontSize: '2.4vw !important',
+    fontSize: '2.4vmin !important',
   },
   lastSeen: {
     marginTop: '88.5%',
     marginLeft: '-15%',
-    fontSize: '2.4vw !important',
+    fontSize: '2.4vmin !important',
   },
   mapTemplate: {
     width: 182,
@@ -165,7 +165,7 @@ const customStyles = {
   },
   charName: {
     width: '100%',
-    fontSize: '5vw',
+    fontSize: '5vmin',
     fontWeight: 150,
     marginTop: '41.4%',
     marginLeft: '0%',
@@ -174,28 +174,28 @@ const customStyles = {
   raceName: {
     width: '100%',
     fontWeight: 150,
-    fontSize: '2.4vw',
+    fontSize: '2.4vmin',
     marginTop: '65.6%',
     marginLeft: '16%',
   },
   className: {
     width: '100%',
     fontWeight: 150,
-    fontSize: '2.4vw',
+    fontSize: '2.4vmin',
     marginTop: '65.6%',
     marginLeft: '-19%',
   },
   storyText: {
     width: '58%',
     fontWeight: 500,
-    fontSize: '2.1vw',
+    fontSize: '2.1vmin',
     marginTop: '50.5%',
     marginLeft: '20%',
   },
   demiseText: {
     width: '45%',
     fontWeight: 500,
-    fontSize: '2.1vw',
+    fontSize: '2.1vmin',
     marginTop: '77%',
     marginLeft: '26%',
   },

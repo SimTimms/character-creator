@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import { getImageAsset } from '../utils/image-asset';
 
 const RaceSelector = props => {
   return (
@@ -19,7 +20,7 @@ const RaceSelector = props => {
         let itemLow = item.toString().toLowerCase();
         return (
           <div key={item}>
-            <img src={require(`../images/race/${itemLow}.jpg`)} alt={itemLow} />
+            <img src={getImageAsset(`race/${itemLow}.jpg`)} alt={itemLow} />
           </div>
         );
       })}

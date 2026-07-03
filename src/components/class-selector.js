@@ -2,6 +2,7 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { getImageAsset } from '../utils/image-asset';
 
 const customStyles = {
   media: {
@@ -28,7 +29,7 @@ const ClassSelector = props => {
         return (
           <div key={item}>
             <img
-              src={require(`../images/class/${itemLow}.jpg`)}
+              src={getImageAsset(`class/${itemLow}.jpg`)}
               alt={itemLow}
             />
           </div>

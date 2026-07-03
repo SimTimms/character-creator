@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import customStyles from '../styles/index';
+import { getImageAsset } from '../utils/image-asset';
 
 class CharacterCard extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class CharacterCard extends Component {
       <div>
         <div className={classes.templateMap}>
           <img
-            src={require(`../images/maps/${mapImage}.jpg`)}
+            src={getImageAsset(`maps/${mapImage}.jpg`)}
             className={classes.map}
             alt="Map"
           />
@@ -69,7 +70,7 @@ class CharacterCard extends Component {
             </Grid>
             <Grid item xs={3} className={classes.gridTemplate}>
               <img
-                src={require(`../images/treasure/${treasureImage}.png`)}
+                src={getImageAsset(`treasure/${treasureImage}.png`)}
                 alt="Card"
                 className={classes.cardTemplate}
               />
